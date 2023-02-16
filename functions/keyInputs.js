@@ -16,6 +16,9 @@ document.onkeydown = function(){
     if(event.key == "space"){
         keys.space = true; 
     }
+    if(event.key == "shift"){
+        keys.shift = true; 
+    }
 }
 
 document.onkeyup = function() {
@@ -33,5 +36,8 @@ document.onkeyup = function() {
     }
     if(event.key == "space"){
         keys.space = false; 
+    }
+    if(event.key == "shift"){
+        keys.shift = false; 
     }
 }
