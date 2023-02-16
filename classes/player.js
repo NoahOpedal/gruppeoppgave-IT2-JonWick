@@ -19,9 +19,27 @@ class Player{
     }
 
     update(){
+        if (keys.a == true){
+            this.#position.x -= 1;
+        }
+        if (keys.d == true){
+            this.#position.x += 1;
+        }
+        if (keys.s == true){
+            this.#position.y += 1;
+        }
+        if (keys.w == true){
+            this.#position.y -= 1;
+        }
+
 
     }
     draw(){
+        ctx.beginPath();
+        ctx.fillStyle = "blue";
+        ctx.fillRect(this.#position.x,this.#position.y, tileSize, 2*tileSize);
+        ctx.fill();
+
 
     }
 }
