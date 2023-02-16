@@ -1,1 +1,3 @@
-# gruppeoppgave-IT2-JonWick
+# Gruppeoppgave-IT2-JonWick
+
+## Classes:
