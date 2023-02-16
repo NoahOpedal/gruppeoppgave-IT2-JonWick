@@ -13,6 +13,9 @@ document.onkeydown = function(){
     if(event.key == "a"){
         keys.w = true; 
     }
+    if(event.key == "space"){
+        keys.space = true; 
+    }
 }
 
 document.onkeyup = function() {
@@ -27,5 +30,8 @@ document.onkeyup = function() {
     }
     if(event.key == "a"){
         keys.w = false; 
+    }
+    if(event.key == "space"){
+        keys.space = false; 
     }
 }
