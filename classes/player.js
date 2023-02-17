@@ -1,12 +1,15 @@
 class Player{
     #position;
+    #velocity;
     #lives;
     #sprite;
 
     constructor(x, y, lives, sprite){
         this.#position = new Vector(x, y);
+        this.#velocity = new Vector(0,0);
         this.#lives = lives;
         this.#sprite = sprite;
+
     }
 
     get position(){
@@ -29,10 +32,12 @@ class Player{
             this.#position.add(new Vector(0,1));
         }
         if (keys.w == true){
-            this.#position.subtract(new Vector(0,1));
+            this.#velocity = new Vector(0,-1.5*tileSize);
+            console.log(this.#velocity);
+            keys.w = false
         }
-
-
+        this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
+        this.#velocity.add(Vector.multiply(new Vector(0,2),tileSize/60));
     }
     draw(){
         ctx.beginPath();
