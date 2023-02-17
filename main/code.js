@@ -11,7 +11,7 @@ let keys = {
 }
 const width = canvas.width;
 const height = canvas.height;
-let tileSize = 16;
+const tilePixels = 16;
 
 
 let player = new Player(30, 30, 5, "");
