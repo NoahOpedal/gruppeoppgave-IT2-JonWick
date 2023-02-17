@@ -13,7 +13,7 @@ class Player{
         return new Vector(this.#position.x, this.#position.y);
     }
     get center(){
-        let x = this.#postion.x + tileSize/2;
+        let x = this.#position.x + tileSize/2;
         let y = this.#position.y + tileSize;
         return new Vector(x, y);
     }
