@@ -37,7 +37,7 @@ class Player{
     draw(){
         ctx.beginPath();
         ctx.fillStyle = "blue";
-        ctx.fillRect(this.#position.x,this.#position.y, tileSize, 2*tileSize);
+        ctx.fillRect(this.position.x,this.position.y, tileSize, 2*tileSize);
         ctx.fill();
 
 
