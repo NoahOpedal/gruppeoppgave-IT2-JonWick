@@ -2,7 +2,15 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 //Constants
-
+let keys = {
+    a:false,
+    s:false,
+    d:false,
+    w:false,
+    space:false
+}
+const width = canvas.width;
+const height = canvas.height;
 let tileSize = 16;
 
 
