@@ -9,9 +9,10 @@ let keys = {
     w:false,
     space:false
 }
-const width = canvas.width;
-const height = canvas.height;
-const tilePixels = 16;
+const height = canvas.height = window.innerHeight;
+const width = canvas.width = height*2;
+const tileSize = width/90;
+const pixel = tileSize/16;
 
 
 let player = new Player(30, 30, 5, "");
@@ -20,14 +21,6 @@ function gameLoop(){
     ctx.clearRect(0, 0, width, height);
     player.update();
     player.draw();
-    
-
-
-
-
-
-
-    
 }
 
 let fps = 60;
