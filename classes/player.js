@@ -30,7 +30,6 @@ class Player{
         }
         if (keys.w == true){
             this.#velocity = new Vector(0,-1.5*tileSize);
-            console.log(this.#velocity);
             keys.w = false
         }
         this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
@@ -38,12 +37,22 @@ class Player{
     }
 
     draw(){        
-        ctx.beginPath();
-        ctx.fillStyle = "blue";
-        ctx.fillRect(this.position.x,this.position.y, tileSize, 2*tileSize);
-        ctx.fill();
-        if(this.#velocity.y != 0){            
+        //Generates a player sprite for each scenario, then draws the given sprite
+        let playerSpriteSheet;
+        let playerSpriteCutStartX;
+        let playerSpriteCutStartY;
 
-        }        
+        if(this.#velocity.y != 0){            
+            playerSpriteSheet = playerJumpingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;            
+        }
+        ctx.drawImage(playerSpriteSheet, 
+            playerSpriteCutStartX, playerSpriteCutStartY,
+            tileSize, 2*tileSize,
+            this.position.x, this.position.y,
+            tileSize, 2*tileSize
+        );
+
     }
 }
