@@ -11,7 +11,7 @@ class Player{
         this.#velocity = new Vector(0,0);
         this.#lives = lives;        
         let playerJumpingSprite = new Image();
-        imgSpriteSheet.src = "player_jumping_sprite.png";
+        playerJumpingSprite.src = "player_jumping_sprite.png";
 
     }
 
