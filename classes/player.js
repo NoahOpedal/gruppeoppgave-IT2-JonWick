@@ -44,7 +44,5 @@ class Player{
         ctx.fillStyle = "blue";
         ctx.fillRect(this.position.x,this.position.y, tileSize, 2*tileSize);
         ctx.fill();
-
-
     }
 }
