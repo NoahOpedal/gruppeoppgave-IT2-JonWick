@@ -15,7 +15,7 @@ const tileSize = width/90;
 const pixel = tileSize/16;
 
 
-let player = new Player(30, 30, 5, "");
+let player = new Player(30, 30, 5);
 
 function gameLoop(){
     ctx.clearRect(0, 0, width, height);
