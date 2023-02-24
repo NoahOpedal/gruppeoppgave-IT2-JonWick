@@ -11,7 +11,7 @@ let keys = {
 }
 const height = canvas.height = window.innerHeight;
 const width = canvas.width = height*2;
-const tileSize = width/90;
+const tileSize = width/90*2.5;
 const pixel = tileSize/16;
 
 let fps = 60;

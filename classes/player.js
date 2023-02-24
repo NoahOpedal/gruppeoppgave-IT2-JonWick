@@ -29,11 +29,11 @@ class Player{
             this.#position.add(new Vector(0,1));
         }
         if (keys.w == true){
-            this.#velocity = new Vector(0,-1.5*tileSize);
+            this.#velocity = new Vector(0,(-1.5/2.5)*tileSize);
             keys.w = false
         }
-        this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
-        this.#velocity.add(Vector.multiply(new Vector(0,2),tileSize/60));        
+        this.#position.add(Vector.multiply(this.#velocity,tileSize/(2.5*60)));
+        this.#velocity.add(Vector.multiply(new Vector(0,2),tileSize/(2.5*60)));        
     }
 
     draw(){        
@@ -49,7 +49,7 @@ class Player{
         }
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
-            tileSize, 2*tileSize,
+            16, 32,
             this.position.x, this.position.y,
             tileSize, 2*tileSize
         );
