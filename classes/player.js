@@ -45,8 +45,15 @@ class Player{
         if(this.#velocity.y != 0){            
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;            
+            playerSpriteCutStartY = 0;
         }
+        //Walking animations
+        else if(keys.s == true){
+            playerSpriteSheet = playerCrouchingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;
+        }
+        //Idle animation
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
             16, 32,

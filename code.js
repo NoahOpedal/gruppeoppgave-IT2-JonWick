@@ -35,7 +35,6 @@ playerWalkingLeftAnimationSheet.onload = loaded();
 let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
-
 function gameLoop(){
     ctx.clearRect(0, 0, width, height);
     player.update();
