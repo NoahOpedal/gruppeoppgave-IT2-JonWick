@@ -1,4 +1,4 @@
-class Player{
+class Player{    
     #position;
     #velocity;
     #lives;        
@@ -38,28 +38,32 @@ class Player{
 
     draw(){        
         //Generates a player sprite for each scenario, then draws the given sprite
-        let playerSpriteSheet;
-        let playerSpriteCutStartX;
-        let playerSpriteCutStartY;
+        let playerSpriteSheet;        
 
+        //Jumping sprite
         if(this.#velocity.y != 0){            
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;
         }
         //Walking animations
+
+        //Crounching animation
         else if(keys.s == true){
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;
         }
         //Idle animation
+        else{
+            playerIdleAnimation();
+            playerSpriteSheet = playerIdleAnimationSheet;
+        }
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
-            16, 32,
+            15, 31,
             this.position.x, this.position.y,
             tileSize, 2*tileSize
-        );
-
+        );                            
     }
 }

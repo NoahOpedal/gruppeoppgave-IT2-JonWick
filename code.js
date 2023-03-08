@@ -17,6 +17,11 @@ const pixel = tileSize/16;
 let fps = 60;
 let player = new Player(30, 30, 5);
 
+//SpriteSheet variables
+let idleAnimCounter = 0;
+let playerSpriteCutStartX;
+let playerSpriteCutStartY;
+
 //Import sprites
 let totalAssets = 5; //Oppdater denne når vi legger til flere assets
 let assetsLoaded = 0;
