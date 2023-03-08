@@ -3,12 +3,14 @@ class Player{
     #velocity;
     #lives;
     #sprite;
+    roomTileValues;
 
-    constructor(x, y, lives, sprite){
+    constructor(x, y, lives, sprite, roomTileValues){
         this.#position = new Vector(x, y);
         this.#velocity = new Vector(0,0);
         this.#lives = lives;
         this.#sprite = sprite;
+        this.roomTileValues = roomTileValues;
 
     }
 
@@ -20,6 +22,28 @@ class Player{
         let y = this.#position.y + tileSize;
         return new Vector(x, y);
     }
+    get velocity(){
+        return this.#velocity;
+    }
+
+
+ 
+
+    setVelocityX(newVelocityX){
+        this.#velocity.x = newVelocityX;
+    }
+
+    setVelocityY(newVelocityY){
+        this.#velocity = new Vector(this.velocity.x,newVelocityY);
+    }
+
+    setPosition(vector){
+        this.#position = new Vector(vector.x, vector.y);
+    }
+
+    
+
+
 
     update(){
         if (keys.a == true){
@@ -36,15 +60,26 @@ class Player{
             console.log(this.#velocity);
             keys.w = false
         }
+    
+
+        collisionDetection();
+        //Room index defined in constructor
+
+
         this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(new Vector(0,2),tileSize/60));
+    
+
     }
+
     draw(){
-        ctx.beginPath();
+        //ctx.beginPath();
         ctx.fillStyle = "blue";
         ctx.fillRect(this.position.x,this.position.y, tileSize, 2*tileSize);
-        ctx.fill();
-
-
+        //ctx.fill();
     }
+
+
 }
+
+
