@@ -1,4 +1,4 @@
-class Player{
+class Player{    
     #position;
     #velocity;
     #lives;
@@ -12,7 +12,13 @@ class Player{
         this.#sprite = sprite;
         this.roomTileValues = roomTileValues;
 
+
     }
+    
+        
+
+
+    
 
     get position(){
         return new Vector(this.#position.x, this.#position.y);
@@ -21,6 +27,7 @@ class Player{
         let x = this.#position.x + tileSize/2;
         let y = this.#position.y + tileSize;
         return new Vector(x, y);
+
     }
     get velocity(){
         return this.#velocity;
@@ -45,6 +52,8 @@ class Player{
 
 
 
+
+
     update(){
         if (keys.a == true){
             this.#position.subtract(new Vector(1,0));
@@ -56,10 +65,10 @@ class Player{
             this.#position.add(new Vector(0,1));
         }
         if (keys.w == true){
-            this.#velocity = new Vector(0,-1.5*tileSize);
-            console.log(this.#velocity);
+            this.#velocity = new Vector(0,(-1.5/2.5)*tileSize);
             keys.w = false
         }
+
     
 
         collisionDetection();
@@ -72,14 +81,40 @@ class Player{
 
     }
 
-    draw(){
-        //ctx.beginPath();
-        ctx.fillStyle = "blue";
-        ctx.fillRect(this.position.x,this.position.y, tileSize, 2*tileSize);
-        //ctx.fill();
+   
+
+    draw(){        
+        //Generates a player sprite for each scenario, then draws the given sprite
+        let playerSpriteSheet;        
+
+        //Jumping sprite
+        if(this.#velocity.y != 0){            
+            playerSpriteSheet = playerJumpingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;
+        }
+        //Walking animations
+
+        //Crounching animation
+        else if(keys.s == true){
+            playerSpriteSheet = playerCrouchingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;
+        }
+        //Idle animation
+        else{
+            playerIdleAnimation();
+            playerSpriteSheet = playerIdleAnimationSheet;
+        }
+        ctx.drawImage(playerSpriteSheet, 
+            playerSpriteCutStartX, playerSpriteCutStartY,
+            15, 31,
+            this.position.x, this.position.y,
+            tileSize, 2*tileSize
+        );                            
+
     }
-
-
 }
+
 
 
