@@ -14,8 +14,25 @@ const width = canvas.width = height*2;
 const tileSize = width/90*2.5;
 const pixel = tileSize/16;
 
+
+let roomTileValues = new Array(45);
+
+for(let i = 0; i < 45; i ++){
+    roomTileValues[i] = new Array(90);
+    for(let a = 0; a < 90; a++){
+
+        if (i == 45 ){
+            roomTileValues[i][a] = 1
+        }
+        else{
+            roomTileValues[i][a] = 0; 
+        }
+    }
+}
+
+
 let fps = 60;
-let player = new Player(30, 30, 5);
+let player = new Player(30, 30, 5, "", roomTileValues);
 
 //SpriteSheet variables
 let idleAnimCounter = 0;
