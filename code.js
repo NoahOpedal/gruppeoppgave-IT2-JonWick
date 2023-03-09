@@ -32,7 +32,7 @@ for(let i = 0; i < 45; i ++){
 
 
 let fps = 60;
-let player = new Player(100, 100, 5, "", roomTileValues);
+let player = new Player(100, 100, 5, roomTileValues);
 
 //SpriteSheet variables
 let idleAnimCounter = 0;

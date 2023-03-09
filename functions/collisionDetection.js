@@ -25,9 +25,6 @@ function collisionDetection(){
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
 
-
-            
-
             //Lava
             if (player.roomTileValues[tileA][playerTiles.x] == 4){
                 player.kill();
@@ -67,6 +64,7 @@ function collisionDetection(){
             //Blocks you can stand on
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
                 player.setVelocityY(0);
+
                 console.log(player.position, "eisnoceconec")
                 if (player.velocity.y < 0){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
@@ -75,11 +73,14 @@ function collisionDetection(){
                 else{
                     player.setPosition(new Vector(player.position.x, (playerTiles.y + 1)*tileSize))
                 }
+
+               
+                
+
         
             }
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
                 player.setVelocityX(0);
-                console.log(player.position, "iowndo")
 
                 player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
                 
