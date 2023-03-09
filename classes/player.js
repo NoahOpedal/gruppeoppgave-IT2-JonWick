@@ -12,7 +12,7 @@ class Player{
         this.#sprite = sprite;
         this.roomTileValues = roomTileValues;
 
-
+        console.log(this.roomTileValues);
     }
     
         
