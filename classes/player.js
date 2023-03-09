@@ -1,15 +1,13 @@
 class Player{    
     #position;
     #velocity;
-    #lives;
-    #sprite;
+    #lives;    
     roomTileValues;
 
-    constructor(x, y, lives, sprite, roomTileValues){
+    constructor(x, y, lives, roomTileValues){
         this.#position = new Vector(x, y);
         this.#velocity = new Vector(0,0);
-        this.#lives = lives;
-        this.#sprite = sprite;
+        this.#lives = lives;        
         this.roomTileValues = roomTileValues;
 
         console.log(this.roomTileValues);
