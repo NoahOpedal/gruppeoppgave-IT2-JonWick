@@ -8,12 +8,13 @@ function collisionDetection(){
            // Vector.add(new Vector(tileSize, 0), player.position),
         
            let playerControlPoints = 
-            [player.position, Vector.add(player.position, new Vector(tileSize, 0)), 
+            [new Vector(player.position.x,player.position.y),
+            Vector.add(player.position, new Vector(tileSize, 0)), 
             Vector.add(new Vector(tileSize, 2*tileSize), player.position),
             Vector.add(new Vector(0, 2*tileSize), player.position) ];
         
         for(let i = 0; i < playerControlPoints.length; i ++){
-            
+            console.log(player.position, player.velocity, i, "anfidvsmk")
 
             //Må sjekke x og y seperat:
             let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x,0));
@@ -23,15 +24,20 @@ function collisionDetection(){
 
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
+            console.log(player.roomTileValues[tileA],tileA,player.velocity,newPosY,playerControlPoints,i)
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
                 player.setVelocityY(0);
-                player.setPosition(player.position.x, (playerTiles.y)*tileSize )
+                console.log(player.position, "eisnoceconec")
+                player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
+                console.log(player.position, "ncincc")
                 
         
             }
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
                 player.setVelocityX(0);
-                player.setPosition(playerTiles.x*tileSize, player.position.y)
+                console.log(player.position, "iowndo")
+
+                player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
                 }
                
                 

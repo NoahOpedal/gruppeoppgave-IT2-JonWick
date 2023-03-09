@@ -37,11 +37,12 @@ class Player{
  
 
     setVelocityX(newVelocityX){
-        this.#velocity.x = newVelocityX;
+        this.#velocity = new Vector(newVelocityX,this.velocity.y);
     }
 
     setVelocityY(newVelocityY){
         this.#velocity = new Vector(this.velocity.x,newVelocityY);
+        console.log(this.#velocity);
     }
 
     setPosition(vector){
@@ -70,12 +71,13 @@ class Player{
         }
 
     
+        console.log(this.position, "bruuu")
 
         collisionDetection();
         //Room index defined in constructor
+        console.log(this.position, "moo")
 
-
-        this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
+        this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(new Vector(0,2),tileSize/60));
     
 

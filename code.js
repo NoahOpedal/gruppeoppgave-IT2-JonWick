@@ -21,7 +21,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 45 ){
+        if (i == 15 || i == 0 || a == 30 || a == 0 ){
             roomTileValues[i][a] = 1
         }
         else{
@@ -32,7 +32,7 @@ for(let i = 0; i < 45; i ++){
 
 
 let fps = 60;
-let player = new Player(30, 30, 5, "", roomTileValues);
+let player = new Player(100, 100, 5, "", roomTileValues);
 
 //SpriteSheet variables
 let idleAnimCounter = 0;
