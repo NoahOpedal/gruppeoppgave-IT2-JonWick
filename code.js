@@ -39,7 +39,7 @@ let idleAnimCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
 
-//Import sprites
+//Import assets
 let totalAssets = 7; //Oppdater denne når vi legger til flere assets
 let assetsLoaded = 0;
 let playerCrouchingSprite = new Image();
