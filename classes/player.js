@@ -9,8 +9,9 @@ class Player{
         this.#velocity = new Vector(0,0);
         this.#lives = lives;        
         this.roomTileValues = roomTileValues;
-
+        this.damageCounter = 0;
         console.log(this.roomTileValues);
+
     }
     
         
@@ -46,7 +47,16 @@ class Player{
         this.#position = new Vector(vector.x, vector.y);
     }
 
-    
+    kill(){
+        this.#lives = 0; 
+    }
+
+    damage(){
+        if(this.damageCounter >= 60){
+        this.#lives -= 1;
+        this.damageCounter = 0;
+        }
+    }
 
 
 
@@ -76,6 +86,7 @@ class Player{
         this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(new Vector(0,2),tileSize/60));
     
+        this.damageCounter+=1;
 
     }
 

@@ -23,6 +23,47 @@ function collisionDetection(){
 
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
+
+
+            
+
+            //Lava
+            if (player.roomTileValues[tileA][playerTiles.x] == 4){
+                player.kill();
+                
+        
+            }
+            if (player.roomTileValues[playerTiles.y][tileI] == 4){
+                player.kill();
+            }
+
+            
+            //Air that damages you: 
+            if (player.roomTileValues[tileA][playerTiles.x] == 2){
+                player.damage();
+                
+        
+            }
+            if (player.roomTileValues[playerTiles.y][tileI] == 2){
+                player.damage();
+
+            //Block that damages you
+            if (player.roomTileValues[tileA][playerTiles.x] == 3){
+                player.damage();
+
+                player.setVelocityY(0);
+                player.setPosition(player.position.x, (playerTiles.y)*tileSize )
+                
+            }
+
+            if (player.roomTileValues[playerTiles.y][tileI] == 3){
+                player.damage();
+
+                player.setVelocityX(0);
+                player.setPosition(playerTiles.x*tileSize, player.position.y)
+            }
+
+            //Blocks you can stand on
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
                 player.setVelocityY(0);
                 player.setPosition(player.position.x, (playerTiles.y)*tileSize )
@@ -33,9 +74,10 @@ function collisionDetection(){
                 player.setVelocityX(0);
                 player.setPosition(playerTiles.x*tileSize, player.position.y)
                 }
+
                
                 
-
         }
+    }
   
 }
