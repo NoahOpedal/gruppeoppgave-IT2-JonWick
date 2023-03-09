@@ -23,23 +23,29 @@ let playerSpriteCutStartX;
 let playerSpriteCutStartY;
 
 //Import sprites
-let totalAssets = 5; //Oppdater denne når vi legger til flere assets
+let totalAssets = 7; //Oppdater denne når vi legger til flere assets
 let assetsLoaded = 0;
 let playerCrouchingSprite = new Image();
-playerCrouchingSprite.src = "sprites/player_crouching_sprite.png";
+playerCrouchingSprite.src = "sprites/player/player_crouching_sprite.png";
 playerCrouchingSprite.onload = loaded();
 let playerIdleAnimationSheet = new Image();
-playerIdleAnimationSheet.src = "sprites/player_idle_animation.png";
+playerIdleAnimationSheet.src = "sprites/player/player_idle_animation.png";
 playerIdleAnimationSheet.onload = loaded();
 let playerJumpingSprite = new Image();
-playerJumpingSprite.src = "sprites/player_jumping_sprite.png";
+playerJumpingSprite.src = "sprites/player/player_jumping_sprite.png";
 playerJumpingSprite.onload = loaded();
 let playerWalkingLeftAnimationSheet = new Image();
-playerWalkingLeftAnimationSheet.src = "sprites/player_walking_left_animation.png";
+playerWalkingLeftAnimationSheet.src = "sprites/player/player_walking_left_animation.png";
 playerWalkingLeftAnimationSheet.onload = loaded();
 let playerWalkingRightAnimationSheet = new Image();
-playerWalkingRightAnimationSheet.src = "sprites/player_walking_right_animation.png";
+playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
+let cobbleStoneTile = new Image();
+cobbleStoneTile.src = "sprites/tiles/cobblestone_tile.png";
+cobbleStoneTile.onload = loaded();
+let brickTile = new Image();
+cobbleStoneTile.src = "sprites/tiles/brick_tile.png";
+cobbleStoneTile.onload = loaded();
 function gameLoop(){
     ctx.clearRect(0, 0, width, height);
     player.update();
