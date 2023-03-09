@@ -16,8 +16,8 @@ function collisionDetection(){
             
 
             //Må sjekke x og y seperat:
-            let newPosX = Vector.add(player.velocity.x, playerControlPoints[i]);
-            let newPosY = Vector.add(player.velocity.y, playerControlPoints[i]);
+            let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x,0));
+            let newPosY = Vector.add( playerControlPoints[i],new Vector(0,player.velocity.y));
 
             let playerTiles = tileVector(player.position); 
 
