@@ -68,9 +68,13 @@ function collisionDetection(){
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
                 player.setVelocityY(0);
                 console.log(player.position, "eisnoceconec")
-                player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
-                console.log(player.position, "ncincc")
-                
+                if (player.velocity.y < 0){
+                    player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
+                    console.log(player.position, "ncincc")
+                }
+                else{
+                    player.setPosition(new Vector(player.position.x, (playerTiles.y + 1)*tileSize))
+                }
         
             }
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
@@ -78,7 +82,16 @@ function collisionDetection(){
                 console.log(player.position, "iowndo")
 
                 player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
+                
+                if (player.velocity.x > 0){
+                    player.setPosition(new Vector(playerTiles.x*tileSize,  player.position.y ))
+                    console.log(player.position, "ncincc")
                 }
+                else{
+                    player.setPosition(new Vector((playerTiles.x + 1)*tileSize,  player.position.y ))
+                }
+            
+            }
 
                
                 
