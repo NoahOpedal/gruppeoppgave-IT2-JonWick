@@ -16,8 +16,8 @@ function collisionDetection(){
         for(let i = 0; i < playerControlPoints.length; i ++){
 
             //Må sjekke x og y seperat:
-            let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x,0));
-            let newPosY = Vector.add( playerControlPoints[i],new Vector(0,player.velocity.y));
+            let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x*tileSize/60,0));
+            let newPosY = Vector.add( playerControlPoints[i],new Vector(0,player.velocity.y*tileSize/60));
 
             let playerTiles = tileVector(player.position); 
 
@@ -74,7 +74,7 @@ function collisionDetection(){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
                 }
                 else{
-                    player.setPosition(new Vector(player.position.x, (playerTiles.y +0.999)*tileSize))
+                    player.setPosition(new Vector(player.position.x, (playerTiles.y+0.999)*tileSize))
                 }
                 player.setVelocityY(0);
 
@@ -88,13 +88,12 @@ function collisionDetection(){
                 player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
                 
                 if (player.velocity.x > 0){
-                    player.setPosition(new Vector((playerTiles.x + 0.999)*tileSize,  player.position.y ))
+                    player.setPosition(new Vector((playerTiles.x+3)*tileSize,  player.position.y ))
                 }
                 else{
-                    player.setPosition(new Vector((playerTiles.x)*tileSize,  player.position.y ))
+                    player.setPosition(new Vector((playerTiles.x+0.95)*tileSize,  player.position.y ))
                 }
                 player.setVelocityX(0);
-a
             }
 
                
