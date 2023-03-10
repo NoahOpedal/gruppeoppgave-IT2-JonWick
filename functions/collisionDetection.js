@@ -14,7 +14,7 @@ function collisionDetection(){
             Vector.add(new Vector(0, 2*tileSize), player.position) ];
         
         for(let i = 0; i < playerControlPoints.length; i ++){
-            console.log(player.position, player.velocity, i, "anfidvsmk")
+     
 
             //Må sjekke x og y seperat:
             let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x,0));
@@ -25,7 +25,13 @@ function collisionDetection(){
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
 
+            console.log(tileA, 1);
+
             //Lava
+
+            console.log(player.roomTileValues[tileA][playerTiles.x]);
+         
+
             if (player.roomTileValues[tileA][playerTiles.x] == 4){
                 player.kill();
                 
@@ -62,13 +68,14 @@ function collisionDetection(){
             }
 
             //Blocks you can stand on
+            
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
                 player.setVelocityY(0);
 
-                console.log(player.position, "eisnoceconec")
+               
                 if (player.velocity.y < 0){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
-                    console.log(player.position, "ncincc")
+                   
                 }
                 else{
                     player.setPosition(new Vector(player.position.x, (playerTiles.y + 1)*tileSize))
@@ -86,7 +93,7 @@ function collisionDetection(){
                 
                 if (player.velocity.x > 0){
                     player.setPosition(new Vector(playerTiles.x*tileSize,  player.position.y ))
-                    console.log(player.position, "ncincc")
+                   
                 }
                 else{
                     player.setPosition(new Vector((playerTiles.x + 1)*tileSize,  player.position.y ))
