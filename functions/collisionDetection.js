@@ -24,7 +24,13 @@ function collisionDetection(){
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
 
+            console.log(tileA, 1);
+
             //Lava
+
+            console.log(player.roomTileValues[tileA][playerTiles.x]);
+         
+
             if (player.roomTileValues[tileA][playerTiles.x] == 4){
                 player.kill();
                 
