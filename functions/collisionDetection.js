@@ -74,7 +74,7 @@ function collisionDetection(){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
                 }
                 else{
-                    player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
+                    player.setPosition(new Vector(player.position.x, (playerTiles.y +0.999)*tileSize))
                 }
                 player.setVelocityY(0);
 
@@ -88,10 +88,10 @@ function collisionDetection(){
                 player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
                 
                 if (player.velocity.x > 0){
-                    player.setPosition(new Vector((playerTiles.x)*tileSize,  player.position.y ))
+                    player.setPosition(new Vector((playerTiles.x + 0.999)*tileSize,  player.position.y ))
                 }
                 else{
-                    player.setPosition(new Vector((playerTiles.x + 1)*tileSize,  player.position.y ))
+                    player.setPosition(new Vector((playerTiles.x)*tileSize,  player.position.y ))
                 }
                 player.setVelocityX(0);
 a
