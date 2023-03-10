@@ -21,7 +21,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 15 || i == 0 || a == 30 || a == 0 ){
+        if (i == 15 || i == 0 || a == 30 || a == 0 || (a == 10 && (i== 14 || i==13 || i == 12))){
             roomTileValues[i][a] = 1
         }
         else{
@@ -60,9 +60,22 @@ playerCrouchingSprite.onload = loaded();
 
 function gameLoop(){
     ctx.clearRect(0, 0, width, height);
+    for(let i = 0; i<roomTileValues.length;i++){
+        for(let j = 0; j<roomTileValues[i].length;j++){
+            if(roomTileValues[i][j]==1){
+                ctx.fillStyle = "red";
+            }
+            else ctx.fillStyle = "blue";
+            ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
+        }
+    }
     ctx.beginPath();
     ctx.moveTo(0,tileSize*15);
-    ctx.lineTo(width,tileSize*15);
+    ctx.lineTo(tileSize*30,tileSize*15);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(tileSize*30,0);
+    ctx.lineTo(tileSize*30,tileSize*15);
     ctx.stroke();
     player.update();
     player.draw();

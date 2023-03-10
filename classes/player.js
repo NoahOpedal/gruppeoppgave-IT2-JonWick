@@ -69,9 +69,9 @@ class Player{
         if (keys.d == true){
             this.#position.add(new Vector(1,0));
         }
-        if (keys.s == true){
+        /*if (keys.s == true){
             this.#position.add(new Vector(0,1));
-        }
+        }*/
         if (keys.w == true){
             this.#velocity = new Vector(0,(-1.5/2.5)*tileSize);
             keys.w = false
