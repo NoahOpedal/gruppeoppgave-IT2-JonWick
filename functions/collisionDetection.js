@@ -14,7 +14,6 @@ function collisionDetection(){
             Vector.add(new Vector(0, 2*tileSize), player.position) ];
         
         for(let i = 0; i < playerControlPoints.length; i ++){
-     
 
             //Må sjekke x og y seperat:
             let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x,0));
@@ -50,7 +49,7 @@ function collisionDetection(){
             }
             if (player.roomTileValues[playerTiles.y][tileI] == 2){
                 player.damage();
-
+            }
             //Block that damages you
             if (player.roomTileValues[tileA][playerTiles.x] == 3){
                 player.damage();
@@ -68,18 +67,16 @@ function collisionDetection(){
             }
 
             //Blocks you can stand on
-            
+            console.log(player.roomTileValues[tileA][playerTiles.x],tileA,playerTiles.x);
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
-                player.setVelocityY(0);
 
-               
                 if (player.velocity.y < 0){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
-                   
                 }
                 else{
-                    player.setPosition(new Vector(player.position.x, (playerTiles.y + 1)*tileSize))
+                    player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
                 }
+                player.setVelocityY(0);
 
                
                 
@@ -87,23 +84,20 @@ function collisionDetection(){
         
             }
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
-                player.setVelocityX(0);
 
                 player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
                 
                 if (player.velocity.x > 0){
-                    player.setPosition(new Vector(playerTiles.x*tileSize,  player.position.y ))
-                   
+                    player.setPosition(new Vector((playerTiles.x)*tileSize,  player.position.y ))
                 }
                 else{
                     player.setPosition(new Vector((playerTiles.x + 1)*tileSize,  player.position.y ))
                 }
-            
+                player.setVelocityX(0);
+a
             }
 
                
                 
         }
     }
-  
-}

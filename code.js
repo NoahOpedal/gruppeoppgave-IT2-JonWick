@@ -11,7 +11,7 @@ let keys = {
 }
 const height = canvas.height = window.innerHeight;
 const width = canvas.width = height*2;
-const tileSize = width/90*2.5;
+const tileSize = width/90;
 const pixel = tileSize/16;
 
 
@@ -62,6 +62,10 @@ playerCrouchingSprite.onload = loaded();
 
 function gameLoop(){
     ctx.clearRect(0, 0, width, height);
+    ctx.beginPath();
+    ctx.moveTo(0,tileSize*15);
+    ctx.lineTo(width,tileSize*15);
+    ctx.stroke();
     player.update();
     player.draw();
 }
