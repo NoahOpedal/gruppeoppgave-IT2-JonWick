@@ -1,18 +1,18 @@
 function playerIdleAnimation(){
-    if(idleAnimCounter < 200){
+    if(idleAnimCounter <= 200){
         playerSpriteCutStartX = 0;
         playerSpriteCutStartY = 0;
     }
-    else if((idleAnimCounter > 200 && idleAnimCounter < 250) || (idleAnimCounter > 450 && idleAnimCounter > 700)){
+    else if((idleAnimCounter > 200 && idleAnimCounter < 225) || (idleAnimCounter > 425 && idleAnimCounter < 450)){
         playerSpriteCutStartX = 32;
         playerSpriteCutStartY = 0;
     }
-    else if(idleAnimCounter < 450){
+    else if(idleAnimCounter <= 425){
         playerSpriteCutStartX = 0;
         playerSpriteCutStartY = 32;
     }
     else{
         idleAnimCounter = 0;
-    }
+    }    
     idleAnimCounter++;
 }

@@ -43,6 +43,7 @@ let player = new Player(100, 100, 5, roomTileValues);
 let idleAnimCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
+let playerStanding = true;
 
 //Import sprites
 let totalAssets = 5; //Oppdater denne når vi legger til flere assets
