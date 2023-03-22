@@ -17,19 +17,20 @@ function collisionDetection(){
 
             //Må sjekke x og y seperat:
             let newPosX = Vector.add( playerControlPoints[i], new Vector(player.velocity.x*tileSize/60,0));
-            let newPosY = Vector.add( playerControlPoints[i],new Vector(0,player.velocity.y*tileSize/60));
+            let newPosY = Vector.add( playerControlPoints[i], new Vector(0,player.velocity.y*tileSize/60));
 
             let playerTiles = tileVector(player.position); 
 
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
 
-            console.log(tileA, 1);
+      
 
             //Lava
 
-            console.log(player.roomTileValues[tileA][playerTiles.x]);
+           
          
+            console.log(tileA, tileI);
 
             if (player.roomTileValues[tileA][playerTiles.x] == 4){
                 player.kill();
@@ -67,8 +68,12 @@ function collisionDetection(){
             }
 
             //Blocks you can stand on
-            console.log(player.roomTileValues[tileA][playerTiles.x],tileA,playerTiles.x);
+
+         
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
+                console.log("skdbkhabkn");
+
+                
 
                 if (player.velocity.y < 0){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
@@ -76,6 +81,7 @@ function collisionDetection(){
                 else{
                     player.setPosition(new Vector(player.position.x, (playerTiles.y+0.999)*tileSize))
                 }
+                standing = true; 
                 player.setVelocityY(0);
 
                
@@ -83,18 +89,36 @@ function collisionDetection(){
 
         
             }
+            else{
+
+            }
+            
+            
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
 
-                player.setPosition(new Vector(playerTiles.x*tileSize, player.position.y))
-                
+
+               
                 if (player.velocity.x > 0){
-                    player.setPosition(new Vector((playerTiles.x+3)*tileSize,  player.position.y ))
+                    console.log("uhdojsedelwjdoieajdiweqpidpwiepdijweoijd");
+                    player.setPosition(new Vector((playerTiles.x + 0.999)*tileSize,  player.position.y ))
+                    collisionRight = true;
+                    
                 }
                 else{
-                    player.setPosition(new Vector((playerTiles.x+0.95)*tileSize,  player.position.y ))
+                 
+                    player.setPosition(new Vector((playerTiles.x )*tileSize,  player.position.y ));
+                    collisionLeft = true;
+                    
                 }
+                intersection = true; 
                 player.setVelocityX(0);
+                player.setAcceleration(0, player.acceleration.y );
             }
+            else{
+                collisionLeft = false; 
+                collisionRight = false;
+            }
+            
 
                
                 

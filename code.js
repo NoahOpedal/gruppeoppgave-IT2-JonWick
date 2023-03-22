@@ -2,6 +2,11 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 //Constants
+ let collisionLeft = false;
+ let collisionRight = false;
+ let standing = false; 
+
+
 let keys = {
     a:false,
     s:false,
@@ -21,7 +26,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 15 || i == 0 || a == 30 || a == 0 || (a == 10 && (i== 14 || i==13 || i == 12))){
+        if (i == 15 || i == 0  || a == 0 /*|| (a == 10 && (i== 14 || i==13 || i == 12)*/){
             roomTileValues[i][a] = 1
         }
         else{
@@ -34,7 +39,7 @@ console.log(roomTileValues);
 
 
 let fps = 60;
-let player = new Player(100, 100, 5, roomTileValues);
+let player = new Player(700, 100, 5, roomTileValues);
 
 //SpriteSheet variables
 let idleAnimCounter = 0;
@@ -61,6 +66,11 @@ playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_anim
 playerCrouchingSprite.onload = loaded();
 
 function gameLoop(){
+
+    console.log(player.velocity);
+
+    
+
     ctx.clearRect(0, 0, width, height);
     for(let i = 0; i<roomTileValues.length;i++){
         for(let j = 0; j<roomTileValues[i].length;j++){
@@ -71,6 +81,10 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
+
+
+    
+
     ctx.beginPath();
     ctx.moveTo(0,tileSize*15);
     ctx.lineTo(tileSize*30,tileSize*15);
