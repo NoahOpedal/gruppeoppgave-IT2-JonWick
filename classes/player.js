@@ -167,10 +167,11 @@ class Player{
         let playerSpriteSheet;        
 
         //Jumping sprite
-        if(playerStanding){            
+        if(!playerStanding){        
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;            
+            playerSpriteCutStartY = 0;
+            console.log("not standing");
         }
         //Walking animations
 
@@ -184,7 +185,8 @@ class Player{
         //Idle animation
         else{
             playerIdleAnimation();
-            playerSpriteSheet = playerIdleAnimationSheet;            
+            playerSpriteSheet = playerIdleAnimationSheet;
+            console.log("Elton John");
         }
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,

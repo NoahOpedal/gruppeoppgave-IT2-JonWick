@@ -40,7 +40,6 @@ for(let i = 0; i < 45; i ++){
 
 console.log(roomTileValues);
 
-
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
 
@@ -48,7 +47,7 @@ let player = new Player(700, 100, 5, roomTileValues);
 let idleAnimCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
-let playerStanding = true;
+let playerStanding = false;
 
 //Import sprites
 let totalAssets = 5; //Oppdater denne når vi legger til flere assets

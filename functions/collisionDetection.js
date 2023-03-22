@@ -81,13 +81,13 @@ function collisionDetection(){
                 }
                 else{
                     player.setPosition(new Vector(player.position.x, (playerTiles.y+0.999)*tileSize))
-                }
-                standing = true; 
+                }            
                 player.setVelocityY(0);
-
+                standing = true; 
+                playerStanding = true;
             }
             else{
-
+                
             }
             
             
