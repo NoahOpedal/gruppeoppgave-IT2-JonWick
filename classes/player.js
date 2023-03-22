@@ -167,33 +167,37 @@ class Player{
         let playerSpriteSheet;        
 
         //Jumping sprite
-        if(!playerStanding){        
+        if(!playerStanding){
+            animCounter = 0;        
             playerSpriteSheet = playerJumpingSprite;
-            playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;
-            console.log("not standing");
-        }
-        //Walking animations
-
-        //Crounching animation
-        else if(keys.s == true){
-            idleAnimCounter = 0;
-            playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;            
         }
+        //Walking animations
+
+        else if(keys.a){            
+            playerSpriteSheet = playerWalkingLeftAnimationSheet;
+            playerWalkingLeftAnimation();
+        }
+
+        //Crounching animation
+        else if(keys.s){
+            animCounter = 0;
+            playerSpriteSheet = playerCrouchingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;
+        }
         //Idle animation
         else{
-            playerIdleAnimation();
             playerSpriteSheet = playerIdleAnimationSheet;
-            console.log("Elton John");
+            playerIdleAnimation();            
         }
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
             15, 31,
             this.position.x, this.position.y,
             tileSize, 2*tileSize
-        );                            
+        );
 
     }
 }

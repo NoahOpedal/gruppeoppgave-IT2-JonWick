@@ -44,7 +44,7 @@ let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
 
 //SpriteSheet variables
-let idleAnimCounter = 0;
+let animCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
 let playerStanding = false;
