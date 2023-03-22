@@ -74,7 +74,6 @@ class Player{
         }*/
         if (keys.w == true){
             this.#velocity = new Vector(0,(-1.5/2.5)*tileSize);
-            keys.w = false
         }
 
     
