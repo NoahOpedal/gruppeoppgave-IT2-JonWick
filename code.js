@@ -29,6 +29,9 @@ for(let i = 0; i < 45; i ++){
         if (i == 15 || i == 0  || a == 0 /*|| (a == 10 && (i== 14 || i==13 || i == 12)*/){
             roomTileValues[i][a] = 1
         }
+        else if (i == 14 && a>10){
+            roomTileValues[i][a] = 4;
+        }
         else{
             roomTileValues[i][a] = 0; 
         }
@@ -45,6 +48,7 @@ let player = new Player(700, 100, 5, roomTileValues);
 let idleAnimCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
+let playerStanding = true;
 
 //Import sprites
 let totalAssets = 5; //Oppdater denne når vi legger til flere assets
@@ -76,6 +80,9 @@ function gameLoop(){
         for(let j = 0; j<roomTileValues[i].length;j++){
             if(roomTileValues[i][j]==1){
                 ctx.fillStyle = "red";
+            }
+            else if(roomTileValues[i][j]==4){
+                ctx.fillStyle = "orange";
             }
             else ctx.fillStyle = "blue";
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);

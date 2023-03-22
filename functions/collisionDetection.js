@@ -77,6 +77,7 @@ function collisionDetection(){
 
                 if (player.velocity.y < 0){
                     player.setPosition(new Vector(player.position.x, (playerTiles.y)*tileSize))
+
                 }
                 else{
                     player.setPosition(new Vector(player.position.x, (playerTiles.y+0.999)*tileSize))
@@ -84,10 +85,6 @@ function collisionDetection(){
                 standing = true; 
                 player.setVelocityY(0);
 
-               
-                
-
-        
             }
             else{
 

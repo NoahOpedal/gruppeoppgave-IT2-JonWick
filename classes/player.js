@@ -167,23 +167,24 @@ class Player{
         let playerSpriteSheet;        
 
         //Jumping sprite
-        if(this.#velocity.y != 0){            
+        if(playerStanding){            
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;
+            playerSpriteCutStartY = 0;            
         }
         //Walking animations
 
         //Crounching animation
         else if(keys.s == true){
+            idleAnimCounter = 0;
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;
+            playerSpriteCutStartY = 0;            
         }
         //Idle animation
         else{
             playerIdleAnimation();
-            playerSpriteSheet = playerIdleAnimationSheet;
+            playerSpriteSheet = playerIdleAnimationSheet;            
         }
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
