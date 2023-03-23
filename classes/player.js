@@ -184,10 +184,19 @@ class Player{
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;
+            
+            //Sliding
+            if(this.#velocity.x < 0.05 && this.#velocity.x > -0.05){
+                this.setVelocityX(0);
+            }
+            else{
+                this.setVelocityX(this.#velocity.x/1.03);
+            }
+            this.setAcceleration(new Vector(0, 0))
         }
 
         //Walking left animation
-        else if(this.#velocity.x < 0){            
+        else if(this.#velocity.x < 0){
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
         }
