@@ -27,8 +27,6 @@ function collisionDetection(){
       
 
             //Lava
-
-           console.log(i,player.velocity);
          
             if (player.roomTileValues[tileA][playerTiles.x] == 4){
                 player.kill();

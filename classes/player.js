@@ -122,20 +122,15 @@ class Player{
             this.#velocity.subtract(new Vector(this.velocity.x, 0));
         }
         if(keys.a == false && this.velocity.x < 0 ){
-            this.#velocity.subtract(new Vector(-0.5, 0));
-            console.log("left",this.velocity);
-    
+            this.#velocity.subtract(new Vector(-0.5, 0));    
         }
         if(keys.d == false && this.velocity.x > 0 ){
             this.#velocity.subtract(new Vector(0.5, 0));
-            console.log("right",this.velocity);
         }
 
        
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
-        console.log("BEFORE", this.acceleration);
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
-        console.log("After", this.acceleration);
 
 
         collisionDetection();
@@ -193,8 +188,9 @@ class Player{
                 this.setVelocityX(this.#velocity.x/1.001);
             }
             this.setAcceleration(new Vector(0, 0))
+            this.setVelocityY(0);            
             keys.d = false;
-            keys.a = false;
+            keys.a = false;            
         }
 
         //Walking left animation

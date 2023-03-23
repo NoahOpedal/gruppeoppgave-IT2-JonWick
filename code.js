@@ -38,8 +38,6 @@ for(let i = 0; i < 45; i ++){
     }
 }
 
-console.log(roomTileValues);
-
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
 
@@ -70,10 +68,6 @@ playerCrouchingSprite.onload = loaded();
 
 function gameLoop(){
 
-    console.log(player.velocity);
-
-    
-
     ctx.clearRect(0, 0, width, height);
     for(let i = 0; i<roomTileValues.length;i++){
         for(let j = 0; j<roomTileValues[i].length;j++){
@@ -87,7 +81,7 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
-    
+
     player.update();
     player.draw();
 }
