@@ -35,6 +35,7 @@ document.onkeydown = function(event){
     if(event.key == "s"){
         keys.s = true; 
     }
+    
     if(event.key == "w"){
         if(standing){
                 if(!keys.w){

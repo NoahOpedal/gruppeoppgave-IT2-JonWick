@@ -186,13 +186,15 @@ class Player{
             playerSpriteCutStartY = 0;
             
             //Sliding
-            if(this.#velocity.x < 0.05 && this.#velocity.x > -0.05){
+            if(this.#velocity.x < 0.001 && this.#velocity.x > -0.001){
                 this.setVelocityX(0);
             }
             else{
-                this.setVelocityX(this.#velocity.x/1.03);
+                this.setVelocityX(this.#velocity.x/1.001);
             }
             this.setAcceleration(new Vector(0, 0))
+            keys.d = false;
+            keys.a = false;
         }
 
         //Walking left animation
