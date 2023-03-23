@@ -12,7 +12,6 @@ class Player{
         this.#lives = lives;        
         this.roomTileValues = roomTileValues;
         this.damageCounter = 0;
-        console.log(this.roomTileValues);
 
     }
     
@@ -99,7 +98,6 @@ class Player{
 
     
 
-        collisionDetection();
         //Room index defined in constructor
 
         /*
@@ -119,23 +117,29 @@ class Player{
         }
         */
 
+        
+        if(!keys.a && !keys.d && (this.velocity.x < 0.5 && this.velocity.x > -0.5)){
+            this.#velocity.subtract(new Vector(this.velocity.x, 0));
+        }
+        if(keys.a == false && this.velocity.x < 0 ){
+            this.#velocity.subtract(new Vector(-0.5, 0));
+            console.log("left",this.velocity);
+    
+        }
+        if(keys.d == false && this.velocity.x > 0 ){
+            this.#velocity.subtract(new Vector(0.5, 0));
+            console.log("right",this.velocity);
+        }
 
        
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
-        console.log(Vector.multiply(this.acceleration,tileSize/60));
+        console.log("BEFORE", this.acceleration);
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
+        console.log("After", this.acceleration);
 
 
-        
-        if(keys.a == false && this.#velocity.x < 0 ){
-            this.#velocity.subtract(new Vector(-0.5, 0));
-    
-        }
-        if(keys.d == false && this.#velocity.x > 0 ){
-            this.#velocity.subtract(new Vector(0.5, 0));
-            console.log("jskjefhsjfk");
-        }
-        
+        collisionDetection();
+
        
         if(this.#velocity.x > 0.1){
 

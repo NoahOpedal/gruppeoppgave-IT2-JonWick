@@ -28,10 +28,8 @@ function collisionDetection(){
 
             //Lava
 
-           
+           console.log(i,player.velocity);
          
-            console.log(tileA, tileI);
-
             if (player.roomTileValues[tileA][playerTiles.x] == 4){
                 player.kill();
                 
@@ -71,7 +69,6 @@ function collisionDetection(){
 
          
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
-                console.log("skdbkhabkn");
 
                 
 
@@ -90,26 +87,25 @@ function collisionDetection(){
                 
             }
             
-            
+            console.log(player.velocity);
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
 
 
                
                 if (player.velocity.x > 0){
-                    console.log("uhdojsedelwjdoieajdiweqpidpwiepdijweoijd");
                     player.setPosition(new Vector((playerTiles.x + 0.999)*tileSize,  player.position.y ))
                     collisionRight = true;
                     
                 }
                 else{
-                 
-                    player.setPosition(new Vector((playerTiles.x )*tileSize,  player.position.y ));
+                    player.setPosition(new Vector((playerTiles.x)*tileSize,  player.position.y ));
                     collisionLeft = true;
                     
                 }
                 intersection = true; 
-                player.setVelocityX(0);
-                player.setAcceleration(0, player.acceleration.y );
+                player.setVelocityX(0)
+                console.log("Vel = 0", player.velocity, i)
+                player.setAcceleration(new Vector(0, player.acceleration.y ));
             }
             else{
                 collisionLeft = false; 
