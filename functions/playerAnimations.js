@@ -41,5 +41,25 @@ function playerWalkingLeftAnimation(){
 }
 
 function playerWalkingRightAnimation(){
-
+    if(animCounter <= 10){
+        playerSpriteCutStartX = 16;
+        playerSpriteCutStartY = 0;
+    }
+    else if(animCounter <= 20){
+        playerSpriteCutStartX = 48;
+        playerSpriteCutStartY = 0;
+    }
+    else if(animCounter <= 30){
+        playerSpriteCutStartX = 16;
+        playerSpriteCutStartY = 32;
+    }
+    else if(animCounter <= 40){
+        playerSpriteCutStartX = 48;
+        playerSpriteCutStartY = 32;
+    }
+    else{        
+        animCounter = 0;
+    }                
+    animCounter++;
+    console.log("AAA", playerSpriteCutStartX, playerSpriteCutStartY);
 }

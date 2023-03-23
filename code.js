@@ -26,7 +26,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 15 || i == 0  || a == 0 || (a == 10 && (i== 14 || i==13 || i == 12))){
+        if (i == 15 || i == 0  || a == 0 /*|| (a == 10 && (i== 14 || i==13 || i == 12)*/){
             roomTileValues[i][a] = 1
         }
         else if (i == 14 && a>10){
@@ -38,6 +38,7 @@ for(let i = 0; i < 45; i ++){
     }
 }
 
+console.log(roomTileValues);
 
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
@@ -67,7 +68,11 @@ let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
 
-function gameLoop(){    
+function gameLoop(){
+
+    console.log(player.velocity);
+
+    
 
     ctx.clearRect(0, 0, width, height);
     for(let i = 0; i<roomTileValues.length;i++){
@@ -82,18 +87,7 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
-
-
     
-
-    ctx.beginPath();
-    ctx.moveTo(0,tileSize*15);
-    ctx.lineTo(tileSize*30,tileSize*15);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(tileSize*30,0);
-    ctx.lineTo(tileSize*30,tileSize*15);
-    ctx.stroke();
     player.update();
     player.draw();
 }
