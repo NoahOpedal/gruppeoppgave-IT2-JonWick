@@ -67,8 +67,8 @@ function collisionDetection(){
 
             //Blocks you can stand on
 
-         
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
+
 
                 
 
@@ -87,7 +87,8 @@ function collisionDetection(){
                 
             }
             
-            console.log(player.velocity);
+        
+           
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
 
 
@@ -103,11 +104,11 @@ function collisionDetection(){
                     
                 }
                 intersection = true; 
-                player.setVelocityX(0)
-                console.log("Vel = 0", player.velocity, i)
+                player.setVelocityX(0);
                 player.setAcceleration(new Vector(0, player.acceleration.y ));
             }
             else{
+                
                 collisionLeft = false; 
                 collisionRight = false;
             }
