@@ -178,8 +178,28 @@ class Player{
             playerSpriteCutStartY = 0;            
         }
 
+<<<<<<< HEAD
+=======
+        //Crounching sprite
+        else if(keys.s){
+            animCounter = 0;
+            playerSpriteSheet = playerCrouchingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;
+            
+            //Sliding
+            if(this.#velocity.x < 0.05 && this.#velocity.x > -0.05){
+                this.setVelocityX(0);
+            }
+            else{
+                this.setVelocityX(this.#velocity.x/1.03);
+            }
+            this.setAcceleration(new Vector(0, 0))
+        }
+
+>>>>>>> d7e7725f7ee77231641c61762b401914d8806d38
         //Walking left animation
-        else if(this.#velocity.x < 0){            
+        else if(this.#velocity.x < 0){
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
         }
