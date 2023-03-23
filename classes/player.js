@@ -178,6 +178,14 @@ class Player{
             playerSpriteCutStartY = 0;            
         }
 
+        //Crounching sprite
+        else if(keys.s){
+            animCounter = 0;
+            playerSpriteSheet = playerCrouchingSprite;
+            playerSpriteCutStartX = 0;
+            playerSpriteCutStartY = 0;
+        }
+
         //Walking left animation
         else if(this.#velocity.x < 0){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
@@ -185,18 +193,11 @@ class Player{
         }
 
         //Walking right animation
-        else if(this.#velocity.x >0){
+        else if(this.#velocity.x > 0){
             playerSpriteSheet = playerWalkingRightAnimationSheet;
             playerWalkingRightAnimation();
         }
 
-        //Crounching animation
-        else if(keys.s){
-            animCounter = 0;
-            playerSpriteSheet = playerCrouchingSprite;
-            playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;
-        }
         //Idle animation
         else{
             playerSpriteSheet = playerIdleAnimationSheet;
