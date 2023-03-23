@@ -1,18 +1,45 @@
 function playerIdleAnimation(){
-    if(idleAnimCounter <= 200){
+    if(animCounter <= 200){
         playerSpriteCutStartX = 0;
         playerSpriteCutStartY = 0;
     }
-    else if((idleAnimCounter > 200 && idleAnimCounter < 225) || (idleAnimCounter > 425 && idleAnimCounter < 450)){
+    else if((animCounter > 200 && animCounter < 225) || (animCounter > 425 && animCounter < 450)){
         playerSpriteCutStartX = 32;
         playerSpriteCutStartY = 0;
     }
-    else if(idleAnimCounter <= 425){
+    else if(animCounter <= 425){
         playerSpriteCutStartX = 0;
         playerSpriteCutStartY = 32;
     }
     else{
-        idleAnimCounter = 0;
+        animCounter = 0;
     }    
-    idleAnimCounter++;
+    animCounter++;
+}
+
+function playerWalkingLeftAnimation(){
+    if(animCounter <= 10){
+        playerSpriteCutStartX = 0;
+        playerSpriteCutStartY = 0;
+    }
+    else if(animCounter <= 20){
+        playerSpriteCutStartX = 32;
+        playerSpriteCutStartY = 0;
+    }
+    else if(animCounter <= 30){
+        playerSpriteCutStartX = 0;
+        playerSpriteCutStartY = 32;
+    }
+    else if(animCounter <= 40){
+        playerSpriteCutStartX = 32;
+        playerSpriteCutStartY = 32;
+    }
+    else{
+        animCounter = 0;
+    }                
+    animCounter++;
+}
+
+function playerWalkingRightAnimation(){
+
 }

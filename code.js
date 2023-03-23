@@ -39,15 +39,14 @@ for(let i = 0; i < 45; i ++){
 }
 
 
-
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
 
 //SpriteSheet variables
-let idleAnimCounter = 0;
+let animCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
-let playerStanding = true;
+let playerStanding = false;
 
 //Import sprites
 let totalAssets = 5; //Oppdater denne når vi legger til flere assets

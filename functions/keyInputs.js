@@ -41,6 +41,7 @@ document.onkeydown = function(event){
                 if(!keys.w){
                     player.addVelocity(new Vector(0,(-1.5/2.5)*tileSize));
                     keys.w = true;
+                    playerStanding = false;                    
                 }
             keys.w = true; 
             }
