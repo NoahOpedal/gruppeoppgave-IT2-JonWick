@@ -26,7 +26,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 15 || i == 0  || a == 0 /*|| (a == 10 && (i== 14 || i==13 || i == 12)*/){
+        if (i == 15 || i == 0  || a == 0 || (a == 10 && (i== 14 || i==13 || i == 12))){
             roomTileValues[i][a] = 1
         }
         else if (i == 14 && a>10){
@@ -38,7 +38,6 @@ for(let i = 0; i < 45; i ++){
     }
 }
 
-console.log(roomTileValues);
 
 
 let fps = 60;
@@ -69,11 +68,7 @@ let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
 
-function gameLoop(){
-
-    console.log(player.velocity);
-
-    
+function gameLoop(){    
 
     ctx.clearRect(0, 0, width, height);
     for(let i = 0; i<roomTileValues.length;i++){

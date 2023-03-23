@@ -14,7 +14,7 @@ document.onkeydown = function(event){
 
     }
     if(event.key == "d"){
-        player.setAcceleration((new Vector(3/((Math.abs((player.velocity.x))*0.5 + 1)) -0.5, player.acceleration.y)));
+        player.setAcceleration((new Vector(3/((Math.abs((player.velocity.x))*0.5 + 1))-0.5, player.acceleration.y)));
         keys.d = true;
         /*if(!keys.d){
 
