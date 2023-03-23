@@ -173,11 +173,17 @@ class Player{
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;            
         }
-        //Walking animations
 
-        else if(keys.a){            
+        //Walking left animation
+        else if(this.#velocity.x < 0){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
+        }
+
+        //Walking right animation
+        else if(this.#velocity.x >0){
+            playerSpriteSheet = playerWalkingRightAnimationSheet;
+            playerWalkingRightAnimation();
         }
 
         //Crounching animation
