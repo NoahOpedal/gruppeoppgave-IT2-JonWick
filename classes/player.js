@@ -9,7 +9,7 @@ class Player{
         this.#position = new Vector(x, y);
         this.#velocity = new Vector(0,0);
         this.#acceleration = new Vector(0,2);
-        this.#lives = lives;        
+        this.#lives = lives;
         this.roomTileValues = roomTileValues;
         this.damageCounter = 0;
 
@@ -147,7 +147,7 @@ class Player{
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));        
 
-        collisionDetection();        
+        collisionDetection(player, 2);        
        
         if(this.#velocity.x > 0.1){
 
@@ -208,7 +208,7 @@ class Player{
         else{
             playerSpriteSheet = playerIdleAnimationSheet;
             playerIdleAnimation();            
-        }
+        }        
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
             15, 31,
