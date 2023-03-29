@@ -77,7 +77,22 @@ class Player{
 
 
 
-    update(){
+    update(){        
+
+        if(keys.s){
+            //Sliding
+            if(this.#velocity.x < 0.001 && this.#velocity.x > -0.001){
+                this.setVelocityX(0);
+            }
+            else{
+                this.setVelocityX(this.#velocity.x/1.001);
+            }
+            this.setAcceleration(new Vector(0, 0));
+            this.setVelocityY(0);
+            keys.d = false;
+            keys.a = false;
+        }
+
         /*if (keys.a == true){
             this.#velocity = (new Vector(-1,this.#velocity.y));
         }
@@ -130,11 +145,9 @@ class Player{
 
        
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
-        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
+        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));        
 
-
-        collisionDetection();
-
+        collisionDetection();        
        
         if(this.#velocity.x > 0.1){
 
@@ -163,8 +176,7 @@ class Player{
 
     draw(){        
         //Generates a player sprite for each scenario, then draws the given sprite
-        let playerSpriteSheet;        
-
+        let playerSpriteSheet;                
         //Jumping sprite
         if(!playerStanding){
             animCounter = 0;        
@@ -178,21 +190,8 @@ class Player{
             animCounter = 0;
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;
-            
-            //Sliding
-            if(this.#velocity.x < 0.001 && this.#velocity.x > -0.001){
-                this.setVelocityX(0);
-            }
-            else{
-                this.setVelocityX(this.#velocity.x/1.001);
-            }
-            this.setAcceleration(new Vector(0, 0))
-            this.setVelocityY(0);            
-            keys.d = false;
-            keys.a = false;            
+            playerSpriteCutStartY = 0;            
         }
-
         //Walking left animation
         else if(this.#velocity.x < 0){
             playerSpriteSheet = playerWalkingLeftAnimationSheet;

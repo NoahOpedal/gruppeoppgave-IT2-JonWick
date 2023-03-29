@@ -44,9 +44,9 @@ document.onkeydown = function(event){
                     playerStanding = false;                    
                 }
             keys.w = true;
-            standing = false
+            standing = false;
         }
-    }
+    }    
     if(event.key == "space"){
         keys.space = true; 
     }
