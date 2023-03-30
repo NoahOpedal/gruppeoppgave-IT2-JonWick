@@ -35,6 +35,7 @@ document.onkeydown = function(event){
     if(event.key == "s"){
         keys.s = true; 
     }
+    
     if(event.key == "w"){
         if(standing){
                 if(!keys.w){
@@ -43,9 +44,9 @@ document.onkeydown = function(event){
                     playerStanding = false;                    
                 }
             keys.w = true;
-            standing = false
+            standing = false;
         }
-    }
+    }    
     if(event.key == "space"){
         keys.space = true; 
     }

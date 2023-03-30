@@ -9,7 +9,7 @@ class Player{
         this.#position = new Vector(x, y);
         this.#velocity = new Vector(0,0);
         this.#acceleration = new Vector(0,2);
-        this.#lives = lives;        
+        this.#lives = lives;
         this.roomTileValues = roomTileValues;
         this.damageCounter = 0;
 
@@ -78,7 +78,22 @@ class Player{
 
 
 
-    update(){
+    update(){        
+
+        if(keys.s){
+            //Sliding
+            if(this.#velocity.x < 0.001 && this.#velocity.x > -0.001){
+                this.setVelocityX(0);
+            }
+            else{
+                this.setVelocityX(this.#velocity.x/1.001);
+            }
+            this.setAcceleration(new Vector(0, 0));
+            this.setVelocityY(0);
+            keys.d = false;
+            keys.a = false;
+        }
+
         /*if (keys.a == true){
             this.#velocity = (new Vector(-1,this.#velocity.y));
         }
@@ -123,20 +138,17 @@ class Player{
             this.#velocity.subtract(new Vector(this.velocity.x, 0));
         }
         if(keys.a == false && this.velocity.x < 0 ){
-            this.#velocity.subtract(new Vector(-0.5, 0));
-    
+            this.#velocity.subtract(new Vector(-0.5, 0));    
         }
         if(keys.d == false && this.velocity.x > 0 ){
             this.#velocity.subtract(new Vector(0.5, 0));
         }
 
        
-        this.#position.add(Vector.multiply(this.velocity,tileSize/fps));
-        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/fps));
+        this.#position.add(Vector.multiply(this.velocity,tileSize/60));
+        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));        
 
-
-        collisionDetection();
-
+        collisionDetection(player, 2);        
        
         if(this.#velocity.x > 0.1){
 
@@ -165,8 +177,7 @@ class Player{
 
     draw(){        
         //Generates a player sprite for each scenario, then draws the given sprite
-        let playerSpriteSheet;        
-
+        let playerSpriteSheet;                
         //Jumping sprite
         if(!playerStanding){
             animCounter = 0;        
@@ -180,9 +191,8 @@ class Player{
             animCounter = 0;
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;
+            playerSpriteCutStartY = 0;            
         }
-
         //Walking left animation
         else if(keys.a && !keys.d){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
@@ -214,7 +224,7 @@ class Player{
         else{
             playerSpriteSheet = playerIdleAnimationSheet;
             playerIdleAnimation();            
-        }
+        }        
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
             15, 31,

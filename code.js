@@ -42,9 +42,11 @@ for(let i = 0; i < 45; i ++){
     }
 }
 
+console.log(roomTileValues);
 
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
+let enemy1 = new Enemy(100, 100, 10, 10);
 
 //SpriteSheet variables
 let animCounter = 0;
@@ -70,9 +72,13 @@ playerWalkingLeftAnimationSheet.onload = loaded();
 let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
+let enemy1Sprite = new Image();
+enemy1Sprite.src = "sprites/enemies/red_cube_enemy_sprite.png";
+enemy1Sprite.onload = loaded();
 
 function gameLoop(){
 
+    console.log(player.velocity);
 
     
 
@@ -89,9 +95,11 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
-    
+
     player.update();
     player.draw();
+    enemy1.update();
+    enemy1.draw();
 }
 
 function loaded(){    

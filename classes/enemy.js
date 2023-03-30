@@ -1,24 +1,26 @@
 class Enemy{
-    #x; 
-    #y; 
+    #position;
     #health; 
     #maxHealth; 
-    #speed; 
-    #sprite; 
+    #velocity;     
 
-    constructor(x, y, maxHealth, speed, sprite){
-        this.#x = x;
-        this.#y = y;
+    constructor(x, y, maxHealth, velocity){
+        this.#position = new Vector(x, y);
+        this.#velocity = new Vector(velocity, 0);
         this.#maxHealth = maxHealth;
-        this.#health = maxHealth;
-        this.#speed = speed;
-        this.#sprite = sprite;        
+        this.#health = maxHealth;                
     }
 
     update(){
-
+        //collisionDetection(enemy1, 1);f
     }
-    draw(){
-        
+    draw(){        
+        ctx.drawImage(enemy1Sprite, 
+            0, 0,
+            16, 16,
+            this.#position.x, this.#position.y,
+            tileSize, tileSize
+        );
+
     }
 }
