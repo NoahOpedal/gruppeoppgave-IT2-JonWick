@@ -2,18 +2,19 @@ class Player{
     #position;
     #velocity;
     #lives;    
-    #acceleration;
-    roomTileValues;
+    #acceleration;    
 
     constructor(x, y, lives, roomTileValues){
         this.#position = new Vector(x, y);
         this.#velocity = new Vector(0,0);
         this.#acceleration = new Vector(0,2);
-        this.#lives = lives;
-        this.roomTileValues = roomTileValues;
+        this.#lives = lives;        
         this.damageCounter = 0;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a98db42444e27255dbebdb44cd7fcd4e2ee17bed
     }
     
         

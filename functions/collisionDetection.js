@@ -56,27 +56,27 @@ function collisionDetection(character, characterHeight){
 =======
 >>>>>>> 701047133cdb7ba442c9c966c7fded076f7b61ab
          
-            if (character.roomTileValues[tileA][playerTiles.x] == 4){
+            if (roomTileValues[tileA][playerTiles.x] == 4){
                 character.kill();
                 
         
             }
-            if (character.roomTileValues[playerTiles.y][tileI] == 4){
+            if (roomTileValues[playerTiles.y][tileI] == 4){
                 character.kill();
             }
 
             
             //Air that damages you: 
-            if (character.roomTileValues[tileA][playerTiles.x] == 2){
+            if (roomTileValues[tileA][playerTiles.x] == 2){
                 character.damage();
                 
         
             }
-            if (character.roomTileValues[playerTiles.y][tileI] == 2){
+            if (roomTileValues[playerTiles.y][tileI] == 2){
                 character.damage();
             }
             //Block that damages you
-            if (character.roomTileValues[tileA][playerTiles.x] == 3){
+            if (roomTileValues[tileA][playerTiles.x] == 3){
                 character.damage();
 
                 character.setVelocityY(0);
@@ -84,7 +84,7 @@ function collisionDetection(character, characterHeight){
                 
             }
 
-            if (character.roomTileValues[playerTiles.y][tileI] == 3){
+            if (roomTileValues[playerTiles.y][tileI] == 3){
                 character.damage();
 
                 character.setVelocityX(0);
@@ -94,11 +94,19 @@ function collisionDetection(character, characterHeight){
             //Blocks you can stand on
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             
             if (player.roomTileValues[tileA][playerTiles.x] == 1){
 =======
             if (character.roomTileValues[tileA][playerTiles.x] == 1){
 >>>>>>> 701047133cdb7ba442c9c966c7fded076f7b61ab
+=======
+            if (roomTileValues[tileA][playerTiles.x] == 1){
+
+
+                
+
+>>>>>>> a98db42444e27255dbebdb44cd7fcd4e2ee17bed
                 if (character.velocity.y < 0){
                     character.setPosition(new Vector(character.position.x, (playerTiles.y)*tileSize))
 
@@ -123,8 +131,12 @@ function collisionDetection(character, characterHeight){
             if (player.roomTileValues[playerTiles.y][tileI] == 1){
 =======
            
+<<<<<<< HEAD
             if (character.roomTileValues[playerTiles.y][tileI] == 1){
 >>>>>>> 701047133cdb7ba442c9c966c7fded076f7b61ab
+=======
+            if (roomTileValues[playerTiles.y][tileI] == 1){
+>>>>>>> a98db42444e27255dbebdb44cd7fcd4e2ee17bed
 
                 console.log("Point:", i, "Hit x value")
                 ctx.fillStyle = "green";
