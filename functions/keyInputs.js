@@ -117,10 +117,6 @@ document.onkeyup = function(event) {
             bullets.push(new Bullet(player.center.x, player.center.y, new Vector(0, 1) ));
         }
 
-        for(let i = 0; i < bullets.length; i ++){
-            bullets.update();
-            bullets.draw();
-        }
 
 
         keys.space = false; 
