@@ -149,7 +149,7 @@ class Player{
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));        
 
-        collisionDetection(player, 2);        
+        collisionDetection(this, 2);        
        
         if(this.#velocity.x > 0.1){
 
