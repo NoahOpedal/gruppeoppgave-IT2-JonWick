@@ -96,14 +96,14 @@ function gameLoop(){
         }
     }
     for(let i = 0; i < bullets.length; i ++){
-        bullets.update();
+        bullets[i].update();
     }
     player.update();
     enemy1.update();
     enemy1.draw();
     player.draw();
     for(let i = 0; i < bullets.length; i ++){
-        bullets.draw();
+        bullets[i].draw();
     }
 
 }
