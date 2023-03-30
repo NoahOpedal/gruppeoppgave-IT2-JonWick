@@ -65,8 +65,8 @@ class Player{
 
     damage(){
         if(this.damageCounter >= fps){
-        this.#lives -= 1;
-        this.damageCounter = 0;
+            this.#lives -= 1;
+            this.damageCounter = 0;
         }
     }
 
@@ -75,10 +75,12 @@ class Player{
 
 
     update(){   
-        
-        if(this.#lives == 0){
-            this.#position = (new Vector(100, 100));
-        }
+        //If killed
+        /*if(this.#lives == 0){
+            this.#position = (new Vector(100, 100));            
+            this.#lives = 3;
+
+        }*/
 
         if(keys.s){
             //Sliding
