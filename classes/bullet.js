@@ -2,16 +2,22 @@ class Bullet{
     #position;
     #speed;
     #direction;
+    #show;
 
 
     constructor(position, speed, direction){
-        this.#position = position;
+        this.#position = new Vector(position.x, position.y);
         this.#speed = speed;
-        this.#direction = direction;
+        this.#direction = new Vector(direction.x, direction.y);
+        this.#show = true; 
     }
 
     get position(){
         return this.#position;
+    }
+
+    get visible(){
+        return this.#show;
     }
 
     update(){
@@ -26,6 +32,13 @@ class Bullet{
         ctx.fill();
     }
 
-    
+    bulletCollicion(){
+        bulletTiles = tileVector(this.#position.x, this.#position.y);
+        if(roomTileValues[bulletTiles.y][bulletTiles.x] == 1 || roomTileValues[bulletTiles.y][bulletTiles.x] == 4){
+            this.#show = false;
+        }
+    }
+
+
     
 }

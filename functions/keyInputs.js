@@ -48,7 +48,21 @@ document.onkeydown = function(event){
         }
     }    
     if(event.key == "space"){
-        keys.space = true; 
+        if(!keys.space){
+            if(keys.a && !keys.d && !keys.w){
+                bullets.push(new Bullet(player.center.x, player.center.y, new Vector(-1, 0) ));
+            }
+            if(!keys.a && keys.d && !keys.w){
+                bullets.push(new Bullet(player.center.x, player.center.y, new Vector(1, 0) ));
+            }
+            if(keys.a && !keys.d && !keys.w){
+                bullets.push(new Bullet(player.center.x, player.center.y, new Vector(0, 1) ));
+            }
+
+            bullets.push(new Bullet(player.center))
+
+            keys.space = true; 
+        }
     }
     if(event.key == "shift"){
         keys.shift = true; 
@@ -107,15 +121,7 @@ document.onkeyup = function(event) {
     }
     if(event.key == "space"){
 
-        if(keys.a && !keys.d && !keys.w){
-            bullets.push(new Bullet(player.center.x, player.center.y, new Vector(-1, 0) ));
-        }
-        if(!keys.a && keys.d && !keys.w){
-            bullets.push(new Bullet(player.center.x, player.center.y, new Vector(1, 0) ));
-        }
-        if(keys.a && !keys.d && !keys.w){
-            bullets.push(new Bullet(player.center.x, player.center.y, new Vector(0, 1) ));
-        }
+       
 
 
 
