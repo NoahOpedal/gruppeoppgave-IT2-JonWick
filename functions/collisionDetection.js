@@ -9,10 +9,10 @@ function collisionDetection(character, characterHeight){
         
            let characterControlPoints = 
             [new Vector(character.position.x,character.position.y),
-            Vector.add(new Vector(0, characterHeight*tileSize), character.position),
-            Vector.add(new Vector(0, 0.25*characterHeight*tileSize), character.position),
-            Vector.add(new Vector(0, 0.75*characterHeight*tileSize), character.position),
-            Vector.add(new Vector(0, 0.5*characterHeight*tileSize), character.position),
+            Vector.add(new Vector(0, 2*tileSize), character.position),
+            Vector.add(new Vector(0, 0.5*tileSize), character.position),
+            Vector.add(new Vector(0, 1.5*tileSize), character.position),
+            Vector.add(new Vector(0, 1*tileSize), character.position),
             Vector.add(character.position, new Vector(tileSize, 0)), 
             Vector.add(new Vector(tileSize, 2*tileSize), character.position),
             Vector.add(new Vector(tileSize, tileSize), character.position), 
@@ -23,7 +23,7 @@ function collisionDetection(character, characterHeight){
         
         for(let i = 0; i < characterControlPoints.length; i ++){
 
-            //Må sjekke x og y seperat:
+            //Må sjekke x og y separat:
             let newPosX = Vector.add( characterControlPoints[i], new Vector(character.velocity.x*tileSize/60,0));
             let newPosY = Vector.add( characterControlPoints[i], new Vector(0,character.velocity.y*tileSize/60));
 
