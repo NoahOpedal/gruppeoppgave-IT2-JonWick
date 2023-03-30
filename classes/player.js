@@ -13,6 +13,7 @@ class Player{
         this.roomTileValues = roomTileValues;
         this.damageCounter = 0;
 
+
     }
     
         
@@ -67,7 +68,7 @@ class Player{
     }
 
     damage(){
-        if(this.damageCounter >= 60){
+        if(this.damageCounter >= fps){
         this.#lives -= 1;
         this.damageCounter = 0;
         }
@@ -123,19 +124,15 @@ class Player{
         }
         if(keys.a == false && this.velocity.x < 0 ){
             this.#velocity.subtract(new Vector(-0.5, 0));
-            console.log("left",this.velocity);
     
         }
         if(keys.d == false && this.velocity.x > 0 ){
             this.#velocity.subtract(new Vector(0.5, 0));
-            console.log("right",this.velocity);
         }
 
        
-        this.#position.add(Vector.multiply(this.velocity,tileSize/60));
-        console.log("BEFORE", this.acceleration);
-        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
-        console.log("After", this.acceleration);
+        this.#position.add(Vector.multiply(this.velocity,tileSize/fps));
+        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/fps));
 
 
         collisionDetection();
@@ -187,16 +184,31 @@ class Player{
         }
 
         //Walking left animation
-        else if(this.#velocity.x < 0){            
+        else if(keys.a && !keys.d){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
         }
 
         //Walking right animation
-        else if(this.#velocity.x > 0){
+        else if(!keys.a && keys.d){
             playerSpriteSheet = playerWalkingRightAnimationSheet;
             playerWalkingRightAnimation();
         }
+
+        /*
+        else if(!keys.a && !keys.d){
+            if(player.velocity < 0.01){
+                playerSpriteSheet = playerWalkingLeftAnimationSheet;
+                playerWalkingLeftAnimation();
+
+            }
+            if(player.velocity > 0.01){
+                playerSpriteSheet = playerWalkingRightAnimationSheet;
+                playerWalkingRightAnimation();
+
+            }
+        }
+        */
 
         //Idle animation
         else{

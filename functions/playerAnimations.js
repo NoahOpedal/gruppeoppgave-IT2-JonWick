@@ -61,5 +61,4 @@ function playerWalkingRightAnimation(){
         animCounter = 0;
     }                
     animCounter++;
-    console.log("AAA", playerSpriteCutStartX, playerSpriteCutStartY);
 }
