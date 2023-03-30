@@ -106,6 +106,19 @@ document.onkeyup = function(event) {
         keys.w = false; 
     }
     if(event.key == "space"){
+
+        if(keys.a && !keys.d && !keys.w){
+            bullets.push(new Bullet(player.center.x, player.center.y, new Vector(-1, 0) ));
+        }
+        if(!keys.a && keys.d && !keys.w){
+            bullets.push(new Bullet(player.center.x, player.center.y, new Vector(1, 0) ));
+        }
+        if(keys.a && !keys.d && !keys.w){
+            bullets.push(new Bullet(player.center.x, player.center.y, new Vector(0, 1) ));
+        }
+
+
+
         keys.space = false; 
     }
     if(event.key == "shift"){

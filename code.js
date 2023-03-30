@@ -26,7 +26,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 15 || i == 0  || a == 0 /*|| (a == 10 && (i== 14 || i==13 || i == 12)*/){
+        if (i == 15 || i == 0  || a == 0 || (a == 45 && (i == 14 ))){
             roomTileValues[i][a] = 1
         }
         else if (i == 14 && a>10){
@@ -35,8 +35,14 @@ for(let i = 0; i < 45; i ++){
         else{
             roomTileValues[i][a] = 0; 
         }
+
+        if(i == 10 && a == 10){
+    
+        }
     }
 }
+
+console.log(roomTileValues);
 
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
@@ -72,6 +78,10 @@ enemy1Sprite.onload = loaded();
 
 function gameLoop(){
 
+    console.log(player.velocity);
+
+    
+
     ctx.clearRect(0, 0, width, height);
     for(let i = 0; i<roomTileValues.length;i++){
         for(let j = 0; j<roomTileValues[i].length;j++){
@@ -85,11 +95,17 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
-
+    for(let i = 0; i < bullets.length; i ++){
+        bullets.update();
+    }
     player.update();
-    player.draw();
     enemy1.update();
     enemy1.draw();
+    player.draw();
+    for(let i = 0; i < bullets.length; i ++){
+        bullets.draw();
+    }
+
 }
 
 function loaded(){    

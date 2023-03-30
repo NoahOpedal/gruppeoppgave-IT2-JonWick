@@ -64,7 +64,7 @@ class Player{
     }
 
     damage(){
-        if(this.damageCounter >= 60){
+        if(this.damageCounter >= fps){
         this.#lives -= 1;
         this.damageCounter = 0;
         }
@@ -74,7 +74,11 @@ class Player{
 
 
 
-    update(){        
+    update(){   
+        
+        if(this.#lives == 0){
+            this.#position = (new Vector(100, 100));
+        }
 
         if(keys.s){
             //Sliding
@@ -144,7 +148,7 @@ class Player{
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));        
 
-        collisionDetection(player, 2);        
+        collisionDetection(this, 2);        
        
         if(this.#velocity.x > 0.1){
 
@@ -190,16 +194,31 @@ class Player{
             playerSpriteCutStartY = 0;            
         }
         //Walking left animation
-        else if(this.#velocity.x < 0){
+        else if(keys.a && !keys.d){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
         }
 
         //Walking right animation
-        else if(this.#velocity.x > 0){
+        else if(!keys.a && keys.d){
             playerSpriteSheet = playerWalkingRightAnimationSheet;
             playerWalkingRightAnimation();
         }
+
+        /*
+        else if(!keys.a && !keys.d){
+            if(player.velocity < 0.01){
+                playerSpriteSheet = playerWalkingLeftAnimationSheet;
+                playerWalkingLeftAnimation();
+
+            }
+            if(player.velocity > 0.01){
+                playerSpriteSheet = playerWalkingRightAnimationSheet;
+                playerWalkingRightAnimation();
+
+            }
+        }
+        */
 
         //Idle animation
         else{
