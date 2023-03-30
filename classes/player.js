@@ -10,11 +10,6 @@ class Player{
         this.#acceleration = new Vector(0,2);
         this.#lives = lives;        
         this.damageCounter = 0;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a98db42444e27255dbebdb44cd7fcd4e2ee17bed
     }
     
         
@@ -79,7 +74,11 @@ class Player{
 
 
 
-    update(){        
+    update(){   
+        
+        if(this.#lives == 0){
+            this.#position = (new Vector(100, 100));
+        }
 
         if(keys.s){
             //Sliding

@@ -77,7 +77,7 @@ function collisionDetection(character, characterHeight){
             //Blocks you can stand on
 
             
-            if (character.roomTileValues[tileA][characterTiles.x] == 1){
+            if (roomTileValues[tileA][characterTiles.x] == 1){
 
                 if (character.velocity.y < 0){
                     character.setPosition(new Vector(character.position.x, (characterTiles.y)*tileSize))
@@ -96,7 +96,7 @@ function collisionDetection(character, characterHeight){
             
         
             
-            if (character.roomTileValues[characterTiles.y][tileI] == 1){
+            if (roomTileValues[characterTiles.y][tileI] == 1){
                 ctx.fillStyle = "green";
                 ctx.fillRect(characterControlPoints[i].x,characterControlPoints[i].y, 2, 2);
                

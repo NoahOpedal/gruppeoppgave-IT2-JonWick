@@ -21,7 +21,11 @@ class Bullet{
 
     draw(){
         ctx.beginPath()
+        ctx.fillstyle = "red";
         ctx.arc(this.position.x, this.position.y, 2, 0, Math.PI*2);
+        ctx.fill();
     }
+
+    
     
 }
