@@ -40,7 +40,7 @@ for(let i = 0; i < 45; i ++){
 
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
-let enemy1 = new Enemy(100, 100, 10, 10);
+let enemy1 = new Enemy(100, 100, 10, 3);
 
 //SpriteSheet variables
 let animCounter = 0;
