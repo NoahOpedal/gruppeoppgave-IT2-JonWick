@@ -30,7 +30,7 @@ for(let i = 0; i < 45; i ++){
             roomTileValues[i][a] = 1
         }
         else if (i == 14 && a>10){
-            roomTileValues[i][a] = 4;
+            roomTileValues[i][a] = 0;
         }
         else{
             roomTileValues[i][a] = 0; 
@@ -42,11 +42,9 @@ for(let i = 0; i < 45; i ++){
     }
 }
 
-console.log(roomTileValues);
-
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
-let enemy1 = new Enemy(100, 100, 10, 10);
+let enemy1 = new Enemy(100, 100, 10, 3);
 
 //SpriteSheet variables
 let animCounter = 0;
@@ -77,9 +75,6 @@ enemy1Sprite.src = "sprites/enemies/red_cube_enemy_sprite.png";
 enemy1Sprite.onload = loaded();
 
 function gameLoop(){
-
-    console.log(player.velocity);
-
     
 
     ctx.clearRect(0, 0, width, height);
@@ -96,14 +91,14 @@ function gameLoop(){
         }
     }
     for(let i = 0; i < bullets.length; i ++){
-        bullets[i].update();
+        bullets.update();
     }
     player.update();
     enemy1.update();
     enemy1.draw();
     player.draw();
     for(let i = 0; i < bullets.length; i ++){
-        bullets[i].draw();
+        bullets.draw();
     }
 
 }

@@ -28,7 +28,6 @@ function collisionDetection(character, characterHeight){
             let newPosY = Vector.add( characterControlPoints[i], new Vector(0,character.velocity.y*tileSize/60));
 
             let characterTiles = tileVector(characterControlPoints[i]); 
-
             let tileI = tileVector(newPosX).x;
             let tileA = tileVector(newPosY).y;
 
@@ -80,12 +79,10 @@ function collisionDetection(character, characterHeight){
             if (roomTileValues[tileA][characterTiles.x] == 1){
 
                 if (character.velocity.y < 0){
-                    character.setPosition(new Vector(character.position.x, (characterTiles.y)*tileSize))
-
+                    character.setPosition(new Vector(character.position.x, (characterTiles.y)*tileSize));
                 }
                 else{
-                    character.setPosition(new Vector(character.position.x, (characterTiles.y-1.001)*tileSize))
-                    character.setPosition(new Vector(character.position.x, (characterTiles.y+0.999)*tileSize))
+                    character.setPosition(new Vector(character.position.x, (characterTiles.y - 1.001)*tileSize));
                 }            
                 character.setVelocityY(0);
                 standing = true; 
@@ -101,7 +98,7 @@ function collisionDetection(character, characterHeight){
                 ctx.fillRect(characterControlPoints[i].x,characterControlPoints[i].y, 2, 2);
                
                 if (character.velocity.x > 0){
-                    character.setPosition(new Vector((characterTiles.x + 0.999)*tileSize,  character.position.y ))
+                    character.setPosition(new Vector((characterTiles.x - 0.001)*tileSize,  character.position.y ))
                     collisionRight = true;
                     
                 }
@@ -109,7 +106,7 @@ function collisionDetection(character, characterHeight){
                     character.setPosition(new Vector((characterTiles.x)*tileSize,  character.position.y ));
                 }
                 if (character.velocity.x > 0){
-                    character.setPosition(new Vector((characterTiles.x + 0.999)*tileSize,  character.position.y ))
+                    character.setPosition(new Vector((characterTiles.x - 0.001)*tileSize,  character.position.y ))
                     collisionRight = true;
                     
                 }
