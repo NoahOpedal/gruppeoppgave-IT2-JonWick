@@ -179,13 +179,14 @@ class Player{
 
     draw(){        
         //Generates a player sprite for each scenario, then draws the given sprite
-        let playerSpriteSheet;                
+        let playerSpriteSheet;
         //Jumping sprite
         if(!playerStanding){
-            animCounter = 0;        
+            animCounter = 0;
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;            
+            playerSpriteCutStartY = 0;
+            console.log("in air");
         }
 
         //Crounching sprite
@@ -194,17 +195,20 @@ class Player{
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;            
+            console.log("crounching");
         }
         //Walking left animation
         else if(keys.a && !keys.d){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
+            console.log("walking left");
         }
 
         //Walking right animation
         else if(!keys.a && keys.d){
             playerSpriteSheet = playerWalkingRightAnimationSheet;
             playerWalkingRightAnimation();
+            console.log("walking right");
         }
 
         /*
@@ -225,7 +229,8 @@ class Player{
         //Idle animation
         else{
             playerSpriteSheet = playerIdleAnimationSheet;
-            playerIdleAnimation();            
+            playerIdleAnimation();      
+            console.log("idling");      
         }        
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,

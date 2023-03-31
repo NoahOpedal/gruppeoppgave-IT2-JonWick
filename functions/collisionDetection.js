@@ -86,7 +86,7 @@ function collisionDetection(character, characterHeight){
                 }            
                 character.setVelocityY(0);
                 standing = true; 
-                characterStanding = true;
+                playerStanding = true;
             }
             
            
