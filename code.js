@@ -44,7 +44,7 @@ for(let i = 0; i < 45; i ++){
 
 let fps = 60;
 let player = new Player(700, 100, 5, roomTileValues);
-let enemy1 = new Enemy(100, 100, 10, 3);
+let enemy1 = new Enemy(500, 100, 10, 3);
 
 //SpriteSheet variables
 let animCounter = 0;
@@ -90,21 +90,25 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
-    for(let i = 0; i < bullets.length; i ++){
+    /*for(let i = 0; i < bullets.length; i ++){
         bullets.update();
-    }
+    }*/
     player.update();
     enemy1.update();
     enemy1.draw();
     player.draw();
+    /*
     for(let i = 0; i < bullets.length; i ++){
         bullets.draw();
-    }
+    }*/
+    
     if(bullets.length > 0){
         console.log(bullets);
     }
 
 }
+
+
 
 function loaded(){    
     assetsLoaded++;

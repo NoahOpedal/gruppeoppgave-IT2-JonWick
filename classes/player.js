@@ -182,13 +182,13 @@ class Player{
 
     draw(){        
         //Generates a player sprite for each scenario, then draws the given sprite
-        let playerSpriteSheet;                
+        let playerSpriteSheet;
         //Jumping sprite
         if(!playerStanding){
-            animCounter = 0;        
+            animCounter = 0;
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
-            playerSpriteCutStartY = 0;            
+            playerSpriteCutStartY = 0;
         }
 
         //Crounching sprite
@@ -228,7 +228,7 @@ class Player{
         //Idle animation
         else{
             playerSpriteSheet = playerIdleAnimationSheet;
-            playerIdleAnimation();            
+            playerIdleAnimation();      
         }        
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
