@@ -86,12 +86,8 @@ function collisionDetection(character, characterHeight){
                 }            
                 character.setVelocityY(0);
                 standing = true; 
-                characterStanding = true;
-            }
-            
-           
-            
-        
+                playerStanding = true;
+            }                                                       
             
             if (roomTileValues[characterTiles.y][tileI] == 1){
                 ctx.fillStyle = "green";

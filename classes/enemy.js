@@ -51,26 +51,38 @@ class Enemy{
         this.#health = 0; 
     }
 
-    update(){        
+    
+    update(){
+
+      
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
-        collisionDetection(enemy1, 1);        
+        collisionDetection(this, 1);        
         
         //Chase player
         if(this.#position.x - player.position.x > 0 && this.#velocity.x == Math.abs(this.#velocity.x)){            
+        
             this.setVelocityX(-1 * this.#velocity.x);            
         }
         else if(this.#position.x - player.position.x < 0 && this.velocity.x != Math.abs(this.#velocity.x)){            
+          
+
             this.setVelocityX(-1 * (this.#velocity.x));
         }
+
+        
+        //Chase player
+ 
 
         //Collision between player and enemy
         if(player.position.x - tileSize < this.#position.x && player.position.x + tileSize > this.#position.x
             && player.position.y - 2*tileSize < this.#position.y && player.position.y + 2*tileSize > this.#position.y){
-            player.kill;
-            console.log("player killed");            
+            player.kill();
+            console.log("player killed");
         }
+    
     }
+    
     draw(){        
         ctx.drawImage(enemy1Sprite, 
             0, 0,
@@ -79,4 +91,5 @@ class Enemy{
             tileSize, tileSize
         );    
     }
+    
 }
