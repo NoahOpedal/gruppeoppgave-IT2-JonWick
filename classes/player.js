@@ -186,7 +186,6 @@ class Player{
             playerSpriteSheet = playerJumpingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;
-            console.log("in air");
         }
 
         //Crounching sprite
@@ -195,20 +194,17 @@ class Player{
             playerSpriteSheet = playerCrouchingSprite;
             playerSpriteCutStartX = 0;
             playerSpriteCutStartY = 0;            
-            console.log("crounching");
         }
         //Walking left animation
         else if(keys.a && !keys.d){            
             playerSpriteSheet = playerWalkingLeftAnimationSheet;
             playerWalkingLeftAnimation();
-            console.log("walking left");
         }
 
         //Walking right animation
         else if(!keys.a && keys.d){
             playerSpriteSheet = playerWalkingRightAnimationSheet;
             playerWalkingRightAnimation();
-            console.log("walking right");
         }
 
         /*
@@ -230,7 +226,6 @@ class Player{
         else{
             playerSpriteSheet = playerIdleAnimationSheet;
             playerIdleAnimation();      
-            console.log("idling");      
         }        
         ctx.drawImage(playerSpriteSheet, 
             playerSpriteCutStartX, playerSpriteCutStartY,
