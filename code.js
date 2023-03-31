@@ -19,7 +19,7 @@ const width = canvas.width = height*2;
 const tileSize = width/90;
 const pixel = tileSize/16;
 
-
+let bullets = [];
 let roomTileValues = new Array(45);
 
 for(let i = 0; i < 45; i ++){
@@ -99,6 +99,9 @@ function gameLoop(){
     player.draw();
     for(let i = 0; i < bullets.length; i ++){
         bullets.draw();
+    }
+    if(bullets.length > 0){
+        console.log(bullets);
     }
 
 }

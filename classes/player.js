@@ -76,11 +76,12 @@ class Player{
 
     update(){   
         //If killed
-        /*if(this.#lives == 0){
-            this.#position = (new Vector(100, 100));            
+        if(this.#lives == 0){
+            this.#position = (new Vector(100, 100)); 
+            this.#velocity = new Vector(0, 0);           
             this.#lives = 3;
 
-        }*/
+        }
 
         if(keys.s){
             //Sliding
@@ -139,12 +140,14 @@ class Player{
         if(!keys.a && !keys.d && (this.velocity.x < 0.5 && this.velocity.x > -0.5)){
             this.#velocity.subtract(new Vector(this.velocity.x, 0));
         }
+        
         if(keys.a == false && this.velocity.x < 0 ){
             this.#velocity.subtract(new Vector(-0.5, 0));    
         }
         if(keys.d == false && this.velocity.x > 0 ){
             this.#velocity.subtract(new Vector(0.5, 0));
         }
+        
 
        
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
