@@ -83,15 +83,16 @@ class Player{
 
         }
 
-        if(keys.s){
+        if(keys.s && playerStanding){
             //Sliding
+            
             if(this.#velocity.x < 0.001 && this.#velocity.x > -0.001){
                 this.setVelocityX(0);
             }
             else{
                 this.setVelocityX(this.#velocity.x/1.001);
             }
-            this.setAcceleration(new Vector(0, 0));
+            this.setAcceleration(new Vector(0, this.#acceleration.y));
             this.setVelocityY(0);
             keys.d = false;
             keys.a = false;
