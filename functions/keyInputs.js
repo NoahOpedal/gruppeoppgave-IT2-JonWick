@@ -44,11 +44,11 @@ document.onkeydown = function(event){
     
     if(event.key == "w"){
         if(standing){
-                if(!keys.w){
-                    player.addVelocity(new Vector(0,(-2/2.5)*tileSize));
-                    keys.w = true;
-                    playerStanding = false;                    
-                }
+            if(!keys.w){
+                player.addVelocity(new Vector(0,(-2/2.5)*tileSize));
+                keys.w = true;
+                playerStanding = false;                    
+            }
             keys.w = true;
             standing = false;
         }
