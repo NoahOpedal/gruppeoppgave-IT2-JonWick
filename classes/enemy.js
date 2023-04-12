@@ -54,10 +54,11 @@ class Enemy{
     
     update(){
 
-      
-        this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
+        this.#position.add(Vector.multiply(this.velocity,tileSize/60));
+     
         collisionDetection(this, 1);        
+        
         
         //Chase player
         if(this.#position.x - player.position.x > 0 && this.#velocity.x == Math.abs(this.#velocity.x)){            
@@ -82,6 +83,8 @@ class Enemy{
         }
     
     }
+    
+    
     
     draw(){        
         ctx.drawImage(enemy1Sprite, 

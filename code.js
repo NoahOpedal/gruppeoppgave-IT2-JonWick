@@ -7,6 +7,8 @@ const ctx = canvas.getContext("2d");
  let standing = false; 
 
 
+
+
 let keys = {
     a:false,
     s:false,
@@ -21,6 +23,8 @@ const pixel = tileSize/16;
 
 let bullets = [];
 let roomTileValues = new Array(45);
+
+let rooms = [];
 
 for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
@@ -43,7 +47,7 @@ for(let i = 0; i < 45; i ++){
 }
 
 let fps = 60;
-let player = new Player(700, 100, 5, roomTileValues);
+let player = new Player(50, 100, 5, roomTileValues);
 let enemy1 = new Enemy(500, 100, 10, 3);
 
 //SpriteSheet variables
@@ -97,6 +101,8 @@ function gameLoop(){
     enemy1.update();
     enemy1.draw();
     player.draw();
+
+    console.log(roomTileValues);
     /*
     for(let i = 0; i < bullets.length; i ++){
         bullets.draw();

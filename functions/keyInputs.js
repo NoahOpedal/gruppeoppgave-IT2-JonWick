@@ -3,7 +3,7 @@ document.onkeydown = function(event){
 
     if(event.key == "a"){
         console.log("aaaaaaaaaaa");
-        player.setAcceleration((new Vector(-2/((Math.abs((player.velocity.x))*0.5 + 1)) +0.5, player.acceleration.y)));
+        player.setAcceleration((new Vector(-0.7/((Math.abs((player.velocity.x))*0.5 + 1)) , player.acceleration.y)));
         keys.a = true;
         /*
         if(!keys.a){
@@ -15,8 +15,12 @@ document.onkeydown = function(event){
 
     }
     if(event.key == "d"){
-        console.log("ddddddddddddd");
-        player.setAcceleration((new Vector(2/((Math.abs((player.velocity.x))*0.5 + 1))-0.5, player.acceleration.y)));
+        player.setAcceleration((new Vector(0.7/((Math.abs((player.velocity.x))*0.5 + 1)), player.acceleration.y)));
+        
+        /*if(Math.abs(player.velocity.x) > 4){
+            player.  (player.acceleration.x - 1, player.acceleration.y)
+        }
+        */
         keys.d = true;
         /*if(!keys.d){
 

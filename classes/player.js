@@ -140,6 +140,7 @@ class Player{
         if(!keys.a && !keys.d && (this.velocity.x < 0.5 && this.velocity.x > -0.5)){
             this.#velocity.subtract(new Vector(this.velocity.x, 0));
         }
+        /*
         
         if(keys.a == false && this.velocity.x < 0 ){
             this.#velocity.subtract(new Vector(-0.5, 0));    
@@ -147,30 +148,51 @@ class Player{
         if(keys.d == false && this.velocity.x > 0 ){
             this.#velocity.subtract(new Vector(0.5, 0));
         }
+        */
         
 
        
         this.#position.add(Vector.multiply(this.velocity,tileSize/60));
         this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));        
 
-        collisionDetection(this, 2);        
+        collisionDetection(this, 2); 
+        
+        
+        if(this.#velocity.x > 0 && keys.a && !keys.d){
+
+           
+
+            this.#velocity.subtract(new Vector(0.35, 0));
+            
+        }
+        
+
+        if(this.#velocity.x < 0 && !keys.a && keys.d){
+
+           
+
+            this.#velocity.subtract(new Vector(-0.35, 0));
+            
+        }
        
-        if(this.#velocity.x > 0.1){
+        if(this.#velocity.x > 0 && !keys.a && !keys.d){
 
             //this.#velocity.subtract(new Vector(0.5, 0));
        
 
             /*
             this.setAcceleration(this.#acceleration.subtract(new Vector(1, 0)));
-            this.#acceleration.subtract(new Vector(1, 0));
-
             */
-        }
-        if(this.#velocity.x < -0.1){
+           // this.#acceleration.subtract(new Vector(0.1, 0));
 
-           // this.#velocity.subtract(new Vector(-0.5, 0));
+            this.#velocity.subtract(new Vector(0.35, 0));
             
-            //this.#acceleration.subtract(new Vector(-1, 0));
+        }
+        if(this.#velocity.x < -0 && !keys.a && !keys.d){
+
+            this.#velocity.subtract(new Vector(-0.35, 0));
+            
+            //this.#acceleration.subtract(new Vector(-0.1, 0));
 
         }
         
