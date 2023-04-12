@@ -87,7 +87,7 @@ class Enemy{
         ctx.drawImage(enemy1Sprite, 
             0, 0,
             16, 16,
-            this.#position.x, this.#position.y + tileSize,
+            this.#position.x, this.#position.y,
             tileSize, tileSize
         );    
     }

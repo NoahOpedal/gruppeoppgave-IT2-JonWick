@@ -2,7 +2,6 @@ document.onkeydown = function(event){
 
 
     if(event.key == "a"){
-        console.log("aaaaaaaaaaa");
         player.setAcceleration((new Vector(-2/((Math.abs((player.velocity.x))*0.5 + 1)) +0.5, player.acceleration.y)));
         keys.a = true;
         /*
@@ -15,7 +14,6 @@ document.onkeydown = function(event){
 
     }
     if(event.key == "d"){
-        console.log("ddddddddddddd");
         player.setAcceleration((new Vector(2/((Math.abs((player.velocity.x))*0.5 + 1))-0.5, player.acceleration.y)));
         keys.d = true;
         /*if(!keys.d){
@@ -40,11 +38,11 @@ document.onkeydown = function(event){
     
     if(event.key == "w"){
         if(standing){
-                if(!keys.w){
-                    player.addVelocity(new Vector(0,(-2/2.5)*tileSize));
-                    keys.w = true;
-                    playerStanding = false;                    
-                }
+            if(!keys.w){
+                player.addVelocity(new Vector(0,(-2/2.5)*tileSize));
+                keys.w = true;
+                playerStanding = false;                    
+            }
             keys.w = true;
             standing = false;
         }

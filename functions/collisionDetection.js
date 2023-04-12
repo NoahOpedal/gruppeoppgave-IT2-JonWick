@@ -9,15 +9,15 @@ function collisionDetection(character, characterHeight){
         
            let characterControlPoints = 
             [new Vector(character.position.x,character.position.y),
-            Vector.add(new Vector(0, 2*tileSize), character.position),
-            Vector.add(new Vector(0, 0.5*tileSize), character.position),
-            Vector.add(new Vector(0, 1.5*tileSize), character.position),
-            Vector.add(new Vector(0, 1*tileSize), character.position),
+            Vector.add(new Vector(0, characterHeight*tileSize), character.position),
+            Vector.add(new Vector(0, 0.25*characterHeight*tileSize), character.position),
+            Vector.add(new Vector(0, 0.75*characterHeight*tileSize), character.position),
+            Vector.add(new Vector(0, 0.5*characterHeight*tileSize), character.position),
             Vector.add(character.position, new Vector(tileSize, 0)), 
-            Vector.add(new Vector(tileSize, 2*tileSize), character.position),
-            Vector.add(new Vector(tileSize, tileSize), character.position), 
-            Vector.add(new Vector(tileSize, 1.5*tileSize), character.position),
-            Vector.add(new Vector(tileSize, 0.5*tileSize), character.position)
+            Vector.add(new Vector(tileSize, characterHeight*tileSize), character.position),
+            Vector.add(new Vector(tileSize, 0.5*characterHeight*tileSize), character.position), 
+            Vector.add(new Vector(tileSize, 0.75*characterHeight*tileSize), character.position),
+            Vector.add(new Vector(tileSize, 0.25*characterHeight*tileSize), character.position)
             
         ];
         
@@ -25,7 +25,7 @@ function collisionDetection(character, characterHeight){
 
             //Må sjekke x og y separat:
             let newPosX = Vector.add( characterControlPoints[i], new Vector(character.velocity.x*tileSize/60,0));
-            let newPosY = Vector.add( characterControlPoints[i], new Vector(0,character.velocity.y*tileSize/60));
+            let newPosY = Vector.add( characterControlPoints[i], new Vector(0,characterHeight*character.velocity.y*tileSize/120));
 
             let characterTiles = tileVector(characterControlPoints[i]); 
             let tileI = tileVector(newPosX).x;
@@ -62,7 +62,7 @@ function collisionDetection(character, characterHeight){
                 character.damage();
 
                 character.setVelocityY(0);
-                character.setPosition(character.position.x, (characterTiles.y)*tileSize )
+                character.setPosition(character.position.x, 0.5*characterHeight*characterTiles.y*tileSize)
                 
             }
 
@@ -70,7 +70,7 @@ function collisionDetection(character, characterHeight){
                 character.damage();
 
                 character.setVelocityX(0);
-                character.setPosition(characterTiles.x*tileSize, character.position.y)
+                character.setPosition(characterTiles.x*tileSize, 0.5*characterHeight*character.position.y)
             }
 
             //Blocks you can stand on
@@ -79,14 +79,16 @@ function collisionDetection(character, characterHeight){
             if (roomTileValues[tileA][characterTiles.x] == 1){
 
                 if (character.velocity.y < 0){
-                    character.setPosition(new Vector(character.position.x, (characterTiles.y)*tileSize));
+                    character.setPosition(new Vector(character.position.x, 0.5*characterHeight*characterTiles.y*tileSize));
                 }
                 else{
                     character.setPosition(new Vector(character.position.x, (characterTiles.y - 1.001)*tileSize));
                 }            
                 character.setVelocityY(0);
-                standing = true; 
-                playerStanding = true;
+                standing = true;
+                if(player == character){
+                    playerStanding = true;
+                }                
             }                                                       
             
             if (roomTileValues[characterTiles.y][tileI] == 1){
