@@ -60,11 +60,8 @@ class Enemy{
         }
         if(this.#velocity.x<-1){
             this.setVelocityX(-1);
-        }
-        //this.#position.add(Vector.multiply(this.#velocity,tileSize/60));
-        this.setPosition(new Vector(this.#position.x + this.#velocity.x, this.#position.y));
-     
-        collisionDetection(this, 1);
+        }        
+        this.setPosition(new Vector(this.#position.x + this.#velocity.x, this.#position.y));             
 
         //Chase player
         if(this.#position.x > player.position.x){
@@ -104,9 +101,9 @@ class Enemy{
     draw(){        
         ctx.drawImage(enemy1Sprite, 
             0, 0,
-            16, 16,
+            48, 16,
             this.#position.x, this.#position.y,            
-            tileSize, tileSize
+            3*tileSize, tileSize
         );        
     }
     

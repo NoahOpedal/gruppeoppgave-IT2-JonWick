@@ -75,7 +75,7 @@ let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
 let enemy1Sprite = new Image();
-enemy1Sprite.src = "sprites/enemies/red_cube_enemy_sprite.png";
+enemy1Sprite.src = "sprites/red_cube_enemy_sprite.png";
 enemy1Sprite.onload = loaded();
 
 function gameLoop(){
