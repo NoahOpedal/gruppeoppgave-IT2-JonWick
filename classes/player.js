@@ -19,7 +19,6 @@ class Player{
         return new Vector(this.#acceleration.x, this.#acceleration.y);
         
     }
-
     get position(){
         return new Vector(this.#position.x, this.#position.y);
     }
