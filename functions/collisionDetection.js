@@ -114,18 +114,12 @@ function collisionDetection(character, characterHeight){
                     
                 }
                 intersection = true; 
-                character.setVelocityX(0);
-                character.setAcceleration(new Vector(0, character.acceleration.y ));
+                character.setVelocityX(0);                
             }
             
-            else{
-                
+            else{                
                 collisionLeft = false; 
                 collisionRight = false;
-            }
-
-
-
-                
+            }    
         }
     }

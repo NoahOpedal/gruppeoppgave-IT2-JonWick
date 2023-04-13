@@ -1,8 +1,7 @@
 document.onkeydown = function(event){
 
 
-    if(event.key == "a"){
-        console.log("aaaaaaaaaaa");
+    if(event.key == "a"){        
         player.setAcceleration((new Vector(-0.7/((Math.abs((player.velocity.x))*0.5 + 1)) , player.acceleration.y)));
         keys.a = true;
         /*

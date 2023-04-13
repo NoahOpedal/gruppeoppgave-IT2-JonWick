@@ -100,17 +100,11 @@ function gameLoop(){
     player.update();
     enemy1.update();
     enemy1.draw();
-    player.draw();
-
-    console.log(roomTileValues);
+    player.draw();    
     /*
     for(let i = 0; i < bullets.length; i ++){
         bullets.draw();
     }*/
-    
-    if(bullets.length > 0){
-        console.log(bullets);
-    }
 
 }
 
