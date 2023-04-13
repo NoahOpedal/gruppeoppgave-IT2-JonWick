@@ -14,7 +14,7 @@ let keys = {
     s:false,
     d:false,
     w:false,
-    space:false
+    q:false
 }
 const height = canvas.height = window.innerHeight;
 const width = canvas.width = height*2;
@@ -30,7 +30,7 @@ for(let i = 0; i < 45; i ++){
     roomTileValues[i] = new Array(90);
     for(let a = 0; a < 90; a++){
 
-        if (i == 15 || i == 0  || a == 0 || (a == 45 && (i == 14 ))){
+        if (i == 15 || i == 0  || a == 0 || (a == 45 && (i == 14 || i == 13 ))){
             roomTileValues[i][a] = 1
         }
         else if (i == 14 && a>10){
@@ -94,22 +94,31 @@ function gameLoop(){
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
         }
     }
-    /*for(let i = 0; i < bullets.length; i ++){
-        bullets.update();
-    }*/
+   
+    for(let i = 0; i < bullets.length; i ++){
+        
+        bullets[i].update();
+    }
     player.update();
     enemy1.update();
+
+    
+    
+
+    for(let i = 0; i < bullets.length; i ++){
+        if(bullets[i].visible){
+            bullets[i].draw();
+        }
+    }
     enemy1.draw();
     player.draw();
 
-    console.log(roomTileValues);
-    /*
-    for(let i = 0; i < bullets.length; i ++){
-        bullets.draw();
-    }*/
+
+    
+ 
     
     if(bullets.length > 0){
-        console.log(bullets);
+        
     }
 
 }
