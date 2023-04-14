@@ -52,21 +52,25 @@ document.onkeydown = function(event){
             standing = false;
         }
     }    
-    if(event.key == "space"){
-        if(!keys.space){
-            if(keys.a && !keys.d && !keys.w){
-                bullets.push(new Bullet(player.center.x, player.center.y, new Vector(-1, 0) ));
+    if(event.key == "q"){
+        if(!keys.q){
+            if(keys.a && playerStanding){
+                
+                bullets.push(new Bullet(new Vector(player.center.x, player.center.y), 13, new Vector(-25, 0), true ));
             }
-            if(!keys.a && keys.d && !keys.w){
-                bullets.push(new Bullet(player.center.x, player.center.y, new Vector(1, 0) ));
+            if(keys.d && playerStanding){
+              
+                bullets.push(new Bullet(new Vector(player.center.x, player.center.y), 13, new Vector(25, 0), true ));
             }
-            if(keys.a && !keys.d && !keys.w){
-                bullets.push(new Bullet(player.center.x, player.center.y, new Vector(0, 1) ));
+            if(keys.w){
+              
+                bullets.push(new Bullet(new Vector(player.center.x, player.center.y), 13, new Vector(0, -25), true ));
             }
+         
 
-            bullets.push(new Bullet(player.center))
+            
 
-            keys.space = true; 
+            keys.q = true; 
         }
     }
     if(event.key == "shift"){
@@ -128,13 +132,13 @@ document.onkeyup = function(event) {
     if(event.key == "w"){
         keys.w = false; 
     }
-    if(event.key == "space"){
+    if(event.key == "q"){
 
        
 
 
 
-        keys.space = false; 
+        keys.q = false; 
     }
     if(event.key == "shift"){
         keys.shift = false; 
