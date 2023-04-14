@@ -1,6 +1,7 @@
 body{
     margin: 0;
+    background-color:transparent;
 }
 canvas{
-    background-color:antiquewhite;
+    background-color:transparent;
 }

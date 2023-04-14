@@ -16,48 +16,51 @@ let keys = {
     w:false,
     space:false
 }
-const height = canvas.height = window.innerHeight;
-const width = canvas.width = height*2;
-const tileSize = width/90;
+const height = canvas.height = 524;
+const width = canvas.width = 1048;
+const tileSize = width/24;
 const pixel = tileSize/16;
-
-let bullets = [];
-let roomTileValues = new Array(45);
-
-let rooms = [];
-
-for(let i = 0; i < 45; i ++){
-    roomTileValues[i] = new Array(90);
-    for(let a = 0; a < 90; a++){
-
-        if (i == 15 || i == 0  || a == 0 || (a == 45 && (i == 14 ))){
-            roomTileValues[i][a] = 1
-        }
-        else if (i == 14 && a>10){
-            roomTileValues[i][a] = 0;
-        }
-        else{
-            roomTileValues[i][a] = 0; 
-        }
-
-        if(i == 10 && a == 10){
-    
-        }
-    }
-}
-
-let fps = 60;
-let player = new Player(50, 100, 5, roomTileValues);
-let enemy1 = new Enemy(500, 100, 10, 3);
-
-//SpriteSheet variables
+let bullets;
+let roomTileValues;
+let rooms;
+let fps;
+let player;
+let enemy1;
 let animCounter = 0;
 let playerSpriteCutStartX;
 let playerSpriteCutStartY;
 let playerStanding = false;
+function init(){
+    bullets = [];
+    roomTileValues = new Array(45);
 
+    rooms = [];
+
+    for(let i = 0; i < 45; i ++){
+        roomTileValues[i] = new Array(90);
+        for(let a = 0; a < 90; a++){
+
+            if (layers[2].data[i*90+a] == 1){
+                roomTileValues[i][a] = 1; 
+            }
+            else{
+                roomTileValues[i][a] = 0; 
+            }
+
+            
+        }
+    }
+
+    fps = 60;
+    player = new Player(tileSize*10, tileSize*10, 5, roomTileValues);
+    enemy1 = new Enemy(tileSize*20, tileSize*10, 10, 3);
+    //SpriteSheet variables
+
+    setInterval(gameLoop, (1/fps)*1000);
+
+}
 //Import sprites
-let totalAssets = 5; //Oppdater denne når vi legger til flere assets
+let totalAssets = 7; //Oppdater denne når vi legger til flere assets
 let assetsLoaded = 0;
 let playerCrouchingSprite = new Image();
 playerCrouchingSprite.src = "sprites/player/player_crouching_sprite.png";
@@ -77,13 +80,35 @@ playerCrouchingSprite.onload = loaded();
 let enemy1Sprite = new Image();
 enemy1Sprite.src = "sprites/enemies/red_cube_enemy_sprite.png";
 enemy1Sprite.onload = loaded();
+let tilesheet = new Image();
+tilesheet.src = "sprites/tiles/tilesheet3.png";
+tilesheet.onload = loaded();
+
+
+let url = "sprites/tiles/tilesheet.json";
+let layers;
+
+let httpRequest = new XMLHttpRequest();
+httpRequest.open("GET", url);
+httpRequest.onload = handleResponse;
+httpRequest.send();
+
+function handleResponse(){
+    let klasser = JSON.parse(httpRequest.responseText);
+    layers = klasser.layers;
+    loaded();
+}
+
+
 
 function gameLoop(){
     
 
     ctx.clearRect(0, 0, width, height);
-    for(let i = 0; i<roomTileValues.length;i++){
-        for(let j = 0; j<roomTileValues[i].length;j++){
+    let playerPosTile = tileVector(player.position)
+    for(let i = playerPosTile.y-7; i<14;i++){
+        for(let j = playerPosTile-13; j<26;j++){
+            /*
             if(roomTileValues[i][j]==1){
                 ctx.fillStyle = "red";
             }
@@ -92,6 +117,10 @@ function gameLoop(){
             }
             else ctx.fillStyle = "blue";
             ctx.fillRect(j*tileSize,i*tileSize,tileSize,tileSize);
+            */
+           let tilenum = layers[0].data[i*90+j];
+           if(tilenum != 0)
+           ctx.drawImage(tilesheet, (tilenum-1)%5*16, Math.floor((tilenum-1)/5)*16, 16, 16,j*tileSize, i*tileSize, tileSize, tileSize);
         }
     }
     /*for(let i = 0; i < bullets.length; i ++){
@@ -101,8 +130,7 @@ function gameLoop(){
     enemy1.update();
     enemy1.draw();
     player.draw();
-
-    console.log(roomTileValues);
+    console.log(roomTileValues, layers[2]);
     /*
     for(let i = 0; i < bullets.length; i ++){
         bullets.draw();
@@ -119,6 +147,8 @@ function gameLoop(){
 function loaded(){    
     assetsLoaded++;
     if(assetsLoaded >= totalAssets){
-        setInterval(gameLoop, (1/fps)*1000);
+        setTimeout(
+        init,
+        100);
     }
 }
