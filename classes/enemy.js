@@ -106,5 +106,4 @@ class Enemy{
             3*tileSize, tileSize
         );        
     }
-    
 }

@@ -5,8 +5,7 @@ const ctx = canvas.getContext("2d");
  let collisionLeft = false;
  let collisionRight = false;
  let standing = false; 
-
-
+ const date = new Date();
 
 
 let keys = {
@@ -59,6 +58,7 @@ let playerStanding = false;
 //Import sprites
 let totalAssets = 5; //Oppdater denne når vi legger til flere assets
 let assetsLoaded = 0;
+let t0 = date.getTime();
 let playerCrouchingSprite = new Image();
 playerCrouchingSprite.src = "sprites/player/player_crouching_sprite.png";
 playerCrouchingSprite.onload = loaded();
@@ -75,9 +75,8 @@ let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
 let enemy1Sprite = new Image();
-enemy1Sprite.src = "sprites/red_cube_enemy_sprite.png";
+enemy1Sprite.src = "sprites/enemies/red_cube_enemy_sprite.png";
 enemy1Sprite.onload = loaded();
-
 function gameLoop(){
     
 
@@ -110,9 +109,19 @@ function gameLoop(){
 
 
 
-function loaded(){    
+function loaded(){
+
+    t0 = date.getTime();
     assetsLoaded++;
     if(assetsLoaded >= totalAssets){
         setInterval(gameLoop, (1/fps)*1000);
+    }
+}
+
+function checkTime(){
+    if(date.getTime - t0 > 20){
+        while(true){
+            console.log(error);
+        }
     }
 }
