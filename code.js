@@ -14,7 +14,7 @@ let keys = {
     s:false,
     d:false,
     w:false,
-    space:false
+    q:false
 }
 const height = canvas.height = 524;
 const width = canvas.width = 1048;
@@ -78,7 +78,7 @@ let playerWalkingRightAnimationSheet = new Image();
 playerWalkingRightAnimationSheet.src = "sprites/player/player_walking_right_animation.png";
 playerCrouchingSprite.onload = loaded();
 let enemy1Sprite = new Image();
-enemy1Sprite.src = "sprites/enemies/red_cube_enemy_sprite.png";
+enemy1Sprite.src = "sprites/red_cube_enemy_sprite.png";
 enemy1Sprite.onload = loaded();
 let tilesheet = new Image();
 tilesheet.src = "sprites/tiles/tilesheet3.png";
@@ -123,21 +123,31 @@ function gameLoop(){
            ctx.drawImage(tilesheet, (tilenum-1)%5*16, Math.floor((tilenum-1)/5)*16, 16, 16,j*tileSize, i*tileSize, tileSize, tileSize);
         }
     }
-    /*for(let i = 0; i < bullets.length; i ++){
-        bullets.update();
-    }*/
+   
+    for(let i = 0; i < bullets.length; i ++){
+        
+        bullets[i].update();
+    }
     player.update();
     enemy1.update();
+
+    
+    
+
+    for(let i = 0; i < bullets.length; i ++){
+        if(bullets[i].visible){
+            bullets[i].draw();
+        }
+    }
     enemy1.draw();
     player.draw();
-    console.log(roomTileValues, layers[2]);
-    /*
-    for(let i = 0; i < bullets.length; i ++){
-        bullets.draw();
-    }*/
+
+
+    
+ 
     
     if(bullets.length > 0){
-        console.log(bullets);
+        
     }
 
 }

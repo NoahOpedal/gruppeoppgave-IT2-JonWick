@@ -53,22 +53,34 @@ class Enemy{
 
     
     update(){
-
-        this.#velocity.add(Vector.multiply(this.acceleration,tileSize/60));
-        this.#position.add(Vector.multiply(this.velocity,tileSize/60));
-     
-        collisionDetection(this, 1);        
         
-        
-        //Chase player
-        if(this.#position.x - player.position.x > 0 && this.#velocity.x == Math.abs(this.#velocity.x)){            
-        
-            this.setVelocityX(-1 * this.#velocity.x);            
+        this.#velocity.add(Vector.multiply(this.#acceleration,tileSize/60));
+        if(this.#velocity.x>1){
+            this.setVelocityX(1);
         }
-        else if(this.#position.x - player.position.x < 0 && this.velocity.x != Math.abs(this.#velocity.x)){            
-          
+        if(this.#velocity.x<-1){
+            this.setVelocityX(-1);
+        }        
+        this.setPosition(new Vector(this.#position.x + this.#velocity.x, this.#position.y));             
 
-            this.setVelocityX(-1 * (this.#velocity.x));
+        //Chase player
+        if(this.#position.x > player.position.x){
+            //console.log("player to the left");
+            if(this.#velocity.x == Math.abs(this.#velocity.x)){
+                this.setVelocityX(-1 * this.#velocity.x);
+            }
+            if(this.#acceleration.x == Math.abs(this.#acceleration.x)){
+                this.setAcceleration(new Vector(-1, this.#acceleration.y))
+            }
+        }
+        else if(this.#position.x < player.position.x){
+            //console.log("player to the right");
+            if(this.#velocity.x != Math.abs(this.#velocity.x)){
+                this.setVelocityX(-1 * this.#velocity.x);
+            }
+            if(this.#acceleration.x != Math.abs(this.#acceleration.x)){
+                this.setAcceleration(new Vector(1, this.#acceleration.y))
+            }
         }
 
         
@@ -89,10 +101,10 @@ class Enemy{
     draw(){        
         ctx.drawImage(enemy1Sprite, 
             0, 0,
-            16, 16,
-            this.#position.x, this.#position.y,
-            tileSize, tileSize
-        );    
+            48, 16,
+            this.#position.x, this.#position.y,            
+            3*tileSize, tileSize
+        );        
     }
     
 }

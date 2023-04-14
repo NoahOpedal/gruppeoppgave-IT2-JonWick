@@ -21,8 +21,15 @@ class Bullet{
     }
 
     update(){
-        this.#position.add(new Vector(this.#direction.x * this.#speed * 1/fps, this.#direction.y * this.#speed * 1/fps));
+        if(roomTileValues[ tileVector(this.#position).y ][tileVector(this.#position).x] != 0){
+            console.log("bsdjs");
+    
+            this.#show = false;
+            this.#speed = 0;
+        }
 
+        this.#position.add(new Vector(this.#direction.x * this.#speed * 1/fps, this.#direction.y * this.#speed * 1/fps));
+       
     }
 
     draw(){
@@ -31,13 +38,9 @@ class Bullet{
         ctx.arc(this.position.x, this.position.y, 2, 0, Math.PI*2);
         ctx.fill();
     }
+    //this.#position.x > player.position.x && this.#position.x < player.position.x + tileSize
 
-    bulletCollicion(){
-        bulletTiles = tileVector(this.#position.x, this.#position.y);
-        if(roomTileValues[bulletTiles.y][bulletTiles.x] == 1 || roomTileValues[bulletTiles.y][bulletTiles.x] == 4){
-            this.#show = false;
-        }
-    }
+   
 
 
     
